@@ -6,6 +6,7 @@
 
 $this->import('
     home-banner
+    home-cadastro
     home-mestres
 ');
 ?>
@@ -13,4 +14,5 @@ $this->import('
 
 <div class="container">
     <home-mestres></home-mestres>
+    <home-cadastro></home-cadastro>
 </div>

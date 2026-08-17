@@ -22,3 +22,36 @@ $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 small {
     font-family: var(--mc-font-body);
 }
+
+// Defeso eleitoral. Reversível: basta remover deste comentário até o fim do arquivo.
+$defeso-neutral: #f9f9f9;
+$defeso-title: #333333;
+$defeso-border: #dcdcdc;
+
+.theme-logo__logo {
+    display: none;
+}
+
+.home-entities__content--cards {
+    .card {
+        border: 1px solid $defeso-border;
+    }
+
+    // visibility, e não display, preserva a altura original do card.
+    .card__left--img {
+        background-color: $defeso-neutral;
+
+        img {
+            visibility: hidden;
+        }
+    }
+
+    // Sem a foto, o overlay de contraste escureceria o fundo neutro.
+    .card__left--content {
+        background-color: transparent;
+    }
+
+    .card__left--content-title .title {
+        color: $defeso-title;
+    }
+}

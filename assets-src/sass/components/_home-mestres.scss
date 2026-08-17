@@ -1,0 +1,58 @@
+.home-mestres {
+    &__title {
+        font-size: size(22);
+        margin-bottom: size(20);
+    }
+
+    &__empty {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+}
+
+.mestres-grid {
+    display: grid;
+    gap: size(20);
+    grid-template-columns: repeat(3, 1fr);
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: size(16);
+    }
+
+    .entity-card {
+        border-radius: var(--mc-border-radius-xs);
+        display: flex;
+        flex-direction: column;
+        gap: size(14);
+        padding: size(20);
+
+        &__header {
+            align-items: center;
+            display: flex;
+            gap: size(14);
+        }
+
+        &__title {
+            font-family: var(--mc-font-headings);
+            font-size: size(17);
+            font-weight: 800;
+        }
+
+        &__subtitle {
+            color: var(--mc-gray-700);
+            font-size: size(12);
+        }
+
+        &__content-shortDescription {
+            color: var(--mc-gray-700);
+            font-size: size(13);
+            line-height: 1.5;
+        }
+
+        &__footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}

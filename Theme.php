@@ -8,4 +8,11 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
     {
         return __DIR__;
     }
+
+    function _init()
+    {
+        parent::_init();
+
+        $this->enqueueStyle('app-v2', 'main', 'css/theme-MestresDaCultura.css');
+    }
 }

@@ -25,6 +25,7 @@ $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 @import './components/check-row';
 @import './components/field-group';
 @import './components/theme-logo';
+@import './components/mc-header-menu';
 
 // O BaseV2 agrupa small com os títulos e aplica a fonte de títulos nos dois.
 small {

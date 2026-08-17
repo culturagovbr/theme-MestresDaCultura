@@ -1,0 +1,33 @@
+.mc-header-menu--item {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: size(6);
+
+    .icon {
+        align-items: center;
+        background: var(--mc-low-500);
+        border-radius: 50%;
+        color: var(--mc-white);
+        display: flex;
+        height: size(32);
+        justify-content: center;
+        width: size(32);
+    }
+
+    .label {
+        color: var(--mc-black);
+        font-family: var(--mc-font-headings);
+        font-size: size(12);
+        font-weight: 700;
+        letter-spacing: size(0.5);
+        line-height: normal;
+        margin: 0;
+    }
+
+    &:hover {
+        .icon {
+            background: var(--mc-secondary-500);
+        }
+    }
+}

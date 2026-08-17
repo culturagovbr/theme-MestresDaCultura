@@ -22,6 +22,12 @@
     }
 }
 
+// O BaseV2 pinta o body com meio branco e meio cinza para as duas colunas do painel
+// sangrarem até a borda. Aqui o painel é uma caixa centrada, e o fundo é branco liso.
+.controller-panel.action-index {
+    background: var(--mc-white);
+}
+
 .panel {
     gap: size(32);
     grid-template-columns: size(280) 1fr;

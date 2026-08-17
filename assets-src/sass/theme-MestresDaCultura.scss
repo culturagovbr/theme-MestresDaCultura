@@ -17,3 +17,8 @@ $font-body: 'Open Sans', sans-serif !default;
 $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 
 @import '../../../BaseV2/assets-src/sass/theme-BaseV2';
+
+// O BaseV2 agrupa small com os títulos e aplica a fonte de títulos nos dois.
+small {
+    font-family: var(--mc-font-body);
+}

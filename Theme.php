@@ -2,6 +2,8 @@
 
 namespace MestresDaCultura;
 
+use MapasCulturais\i;
+
 class Theme extends \MapasCulturais\Themes\BaseV2\Theme
 {
     static function getThemeFolder()
@@ -23,14 +25,51 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             $iconset['registration'] = 'mdi:file-account';
         });
 
-        $app->hook('panel.nav', function (&$nav_items) {
-            $nav_items = ['mdc-create' => [
-                'label' => \MapasCulturais\i::__('Criar novo cadastro'),
-                'column' => 'left',
-                'items' => [
-                    ['route' => 'panel/events', 'icon' => 'celebration', 'label' => \MapasCulturais\i::__('Criar Cadastro de Festejo Popular')],
+        // Prioridade alta para rodar depois dos módulos que alimentam a lista.
+        $app->hook('panel.nav', function (&$nav_items) use ($app) {
+            // Preserva o item original, que carrega a condição de avaliador.
+            $avaliacoes = array_values(array_filter(
+                $nav_items['opportunities']['items'] ?? [],
+                fn($item) => ($item['route'] ?? '') === 'panel/evaluations'
+            ));
+
+            $oportunidades = array_map(function ($item) use ($app) {
+                $item['condition'] = fn() => $app->user->is('admin');
+                return $item;
+            }, array_values(array_filter(
+                $nav_items['opportunities']['items'] ?? [],
+                fn($item) => ($item['route'] ?? '') === 'panel/opportunities'
+            )));
+
+            $grupos = [
+                'mdc-criar' => [
+                    'label' => i::__('Criar novo cadastro'),
+                    'column' => 'left',
+                    'items' => [
+                        // Sem rota até a oportunidade fixa existir; renderiza sem link.
+                        ['icon' => 'master', 'label' => i::__('Criar Cadastro de Mestre/Mestra')],
+                        ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Criar Cadastro de Festejo Popular')],
+                    ],
                 ],
-            ]] + $nav_items;
-        });
+                // Coluna "user": o componente a renderiza depois de um traço e sem título.
+                'user' => [
+                    'label' => '',
+                    'column' => 'user',
+                    'items' => array_merge([
+                        ['route' => 'panel/my-account', 'icon' => 'account', 'label' => i::__('Conta e Privacidade')],
+                    ], $avaliacoes, [
+                        ['route' => 'auth/logout', 'icon' => 'logout', 'label' => i::__('Sair')],
+                    ]),
+                ],
+            ];
+
+            // Administração segue como o core e os plugins montaram, com os itens de gestão.
+            if (isset($nav_items['admin'])) {
+                $nav_items['admin']['items'] = array_merge($nav_items['admin']['items'] ?? [], $oportunidades);
+                $grupos['admin'] = $nav_items['admin'];
+            }
+
+            $nav_items = $grupos;
+        }, 1000);
     }
 }

@@ -21,5 +21,15 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             $iconset['master'] = 'mdi:account-star';
             $iconset['celebration'] = 'mdi:party-popper';
         });
+
+        $app->hook('panel.nav', function (&$nav_items) {
+            $nav_items = ['mdc-create' => [
+                'label' => \MapasCulturais\i::__('Criar novo cadastro'),
+                'column' => 'left',
+                'items' => [
+                    ['route' => 'panel/events', 'icon' => 'celebration', 'label' => \MapasCulturais\i::__('Criar Cadastro de Festejo Popular')],
+                ],
+            ]] + $nav_items;
+        });
     }
 }

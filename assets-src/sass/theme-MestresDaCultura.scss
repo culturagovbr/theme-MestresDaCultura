@@ -1,1 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700;800&display=swap');
+
+// O BaseV2 deriva -300 e -700 por lighten/darken de 25% sobre o -500; a paleta oficial não
+// segue essa derivação, então os três valores são declarados.
+$primary-500: #3F7FA1 !default;
+$primary-300: #C5D8E3 !default;
+$primary-700: #07162B !default;
+
+$secondary-500: #F74E11 !default;
+$secondary-300: #FDCAB7 !default;
+$secondary-700: #80104A !default;
+
+$opportunities-500: #F74E11 !default;
+$projects-500: #3F7FA1 !default;
+
+$font-body: 'Open Sans', sans-serif !default;
+$font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
+
 @import '../../../BaseV2/assets-src/sass/theme-BaseV2';

@@ -102,6 +102,13 @@
         color: var(--mc-gray-500);
         cursor: default;
     }
+
+    // O BaseV2 pinta o ícone de branco no hover do bloco do usuário, e aqui o fundo
+    // do hover é branco — o ícone sumia.
+    &__right--user li:focus .iconify,
+    &__right--user li:hover .iconify {
+        color: $olive;
+    }
 }
 
 .panel--meus-cadastros {

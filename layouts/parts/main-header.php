@@ -15,6 +15,7 @@ $this->import('
 ');
 
 $redirect_to = $_SERVER['REQUEST_URI'] ?? '/';
+$current_controller = $this->controller?->id;
 ?>
 <?php $this->applyTemplateHook('main-header', 'before') ?>
 <header class="main-header" id="main-header">
@@ -36,7 +37,7 @@ $redirect_to = $_SERVER['REQUEST_URI'] ?? '/';
                 <?php $this->applyTemplateHook('mc-header-menu-home', 'before') ?>
                 <li>
                     <?php $this->applyTemplateHook('mc-header-menu-home', 'begin') ?>
-                    <a href="<?= $app->createUrl('site', 'index') ?>" class="mc-header-menu--item">
+                    <a href="<?= $app->createUrl('site', 'index') ?>" class="mc-header-menu--item<?= $current_controller === 'site' ? ' active' : '' ?>">
                         <span class="icon"> <mc-icon name="home"></mc-icon> </span>
                         <p class="label"> <?php i::_e('Home') ?> </p>
                     </a>
@@ -59,7 +60,7 @@ $redirect_to = $_SERVER['REQUEST_URI'] ?? '/';
                 </li>
 
                 <li>
-                    <a href="<?= $app->createUrl('panel', 'index') ?>" class="mc-header-menu--item">
+                    <a href="<?= $app->createUrl('panel', 'index') ?>" class="mc-header-menu--item<?= $current_controller === 'panel' ? ' active' : '' ?>">
                         <span class="icon"> <mc-icon name="dashboard"></mc-icon> </span>
                         <p class="label"> <?php i::_e('Painel de<br>Controle') ?> </p>
                     </a>

@@ -25,9 +25,14 @@
         margin: 0;
     }
 
+    &.active,
     &:hover {
         .icon {
             background: var(--mc-secondary-500);
         }
+    }
+
+    &.active .label {
+        color: var(--mc-secondary-500);
     }
 }

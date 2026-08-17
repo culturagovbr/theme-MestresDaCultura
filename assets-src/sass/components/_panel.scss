@@ -1,53 +1,24 @@
-.panel--meus-cadastros {
-    &__title {
-        font-size: size(20);
-        margin-bottom: size(16);
+// O ul do breadcrumb é absoluto no BaseV2 para sobrepor a capa das entidades; no painel
+// não há capa, e ele precisa ocupar espaço no fluxo.
+.panel-breadcrumb {
+    .mc-breadcrumb ul {
+        gap: size(6);
+        padding: size(12) size(24);
+        position: static;
     }
 
-    &__empty {
+    .mc-breadcrumb li {
         color: var(--mc-gray-700);
-        font-size: size(13);
+        font-weight: 600;
+
+        &:last-child {
+            color: var(--mc-black);
+            font-weight: 700;
+        }
     }
 
-    .mc-card {
-        border-radius: var(--mc-border-radius-xs);
-        box-shadow: var(--mc-shadow-lv1);
-        padding: 0;
-    }
-
-    .mc-card__content {
-        display: block;
-        padding: 0;
-    }
-}
-
-.registro-row {
-    align-items: center;
-    border-bottom: var(--mc-border-hairline) var(--mc-gray-100);
-    color: inherit;
-    display: flex;
-    justify-content: space-between;
-    padding: size(16);
-    text-decoration: none;
-
-    &:last-child {
-        border-bottom: none;
-    }
-
-    &__title {
-        font-family: var(--mc-font-headings);
-        font-size: size(15);
-        font-weight: 700;
-    }
-
-    &__meta {
-        color: var(--mc-gray-700);
+    .mc-breadcrumb a {
         font-size: size(12);
     }
-
-    // O BaseV2 centraliza o status com margem automática; aqui ele fica na borda.
-    .mc-status {
-        font-size: size(14);
-        margin: 0;
-    }
 }
+

@@ -1,0 +1,15 @@
+.container {
+    gap: size(32);
+    grid-template-columns: 2fr 1fr;
+    margin: 0 auto;
+    max-width: size(1170);
+    padding: size(40) size(16);
+
+    @media (max-width: size(1060)) {
+        grid-template-columns: 60% 37%;
+    }
+
+    @media (max-width: size(800)) {
+        grid-template-columns: 100%;
+    }
+}

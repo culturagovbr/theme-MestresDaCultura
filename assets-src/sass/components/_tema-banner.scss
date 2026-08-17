@@ -1,0 +1,65 @@
+.tema-banner {
+    background: $cream;
+    // A assinatura cromática do programa: as cinco paradas da paleta oficial na borda superior.
+    border-image: linear-gradient(90deg, $yellow, $orange, var(--mc-secondary-500), $red, var(--mc-secondary-700)) 1;
+    border-top: size(6) solid transparent;
+    color: var(--mc-primary-700);
+    padding: size(48) size(24);
+    text-align: center;
+
+    @include mobile {
+        padding: size(32) size(16);
+    }
+
+    h1 {
+        font-size: size(34);
+        font-weight: 800;
+        margin-bottom: size(10);
+
+        @include mobile {
+            font-size: size(22);
+        }
+    }
+
+    p {
+        font-size: size(15);
+        margin: 0 auto;
+        max-width: size(640);
+        opacity: 0.85;
+    }
+
+    .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(16);
+        justify-content: center;
+        margin-top: size(28);
+
+        @include mobile {
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+
+    .badge {
+        background: var(--mc-white);
+        border: var(--mc-border-hairline) var(--mc-gray-300);
+        border-radius: size(12);
+        box-shadow: var(--mc-shadow-lv1);
+        min-width: size(160);
+        padding: size(16) size(28);
+
+        strong {
+            color: var(--mc-secondary-500);
+            display: block;
+            font-size: size(28);
+        }
+
+        span {
+            color: var(--mc-gray-700);
+            font-size: size(12);
+            letter-spacing: size(0.5);
+            text-transform: uppercase;
+        }
+    }
+}

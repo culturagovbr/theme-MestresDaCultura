@@ -12,6 +12,9 @@ $secondary-700: #80104A !default;
 
 $olive: #A0A000 !default;
 $orange: #FF982A !default;
+$yellow: #FCB601 !default;
+$red: #DF3D2D !default;
+$cream: #FCFAED !default;
 
 $opportunities-500: #F74E11 !default;
 $projects-500: #3F7FA1 !default;
@@ -26,6 +29,7 @@ $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 @import './components/field-group';
 @import './components/theme-logo';
 @import './components/mc-header-menu';
+@import './components/tema-banner';
 
 // O BaseV2 agrupa small com os títulos e aplica a fonte de títulos nos dois.
 small {

@@ -20,6 +20,7 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
         $app->hook('component(mc-icon).iconset', function (&$iconset) {
             $iconset['master'] = 'mdi:account-star';
             $iconset['celebration'] = 'mdi:party-popper';
+            $iconset['registration'] = 'mdi:file-account';
         });
 
         $app->hook('panel.nav', function (&$nav_items) {

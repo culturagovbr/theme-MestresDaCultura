@@ -142,9 +142,14 @@
     justify-content: space-between;
     padding: size(16);
     text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
 
     &:last-child {
         border-bottom: none;
+    }
+
+    &:hover {
+        background-color: var(--mc-gray-100);
     }
 
     &__title {

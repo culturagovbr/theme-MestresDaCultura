@@ -1,0 +1,33 @@
+.section-card {
+    background: var(--mc-white);
+    border-radius: var(--mc-border-radius-sm);
+    box-shadow: var(--mc-shadow-lv1);
+    margin-bottom: size(24);
+    padding: size(24);
+
+    @include mobile {
+        padding: size(16);
+    }
+
+    &__title {
+        align-items: center;
+        display: flex;
+        font-size: size(20);
+        font-weight: 700;
+        gap: size(10);
+        line-height: size(25);
+        margin-bottom: size(4);
+
+        iconify {
+            color: var(--mc-secondary-500);
+            font-size: size(22);
+        }
+    }
+
+    &__subtitle {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+        font-weight: 400;
+        margin-bottom: size(16);
+    }
+}

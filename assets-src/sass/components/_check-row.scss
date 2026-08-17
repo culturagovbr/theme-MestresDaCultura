@@ -1,0 +1,18 @@
+.check-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: size(14);
+    gap: size(10);
+    padding: size(6) 0;
+
+    input {
+        height: size(16);
+        width: size(16);
+    }
+
+    &.selected {
+        color: var(--mc-secondary-700);
+        font-weight: 700;
+    }
+}

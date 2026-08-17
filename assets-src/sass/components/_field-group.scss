@@ -1,0 +1,6 @@
+// O BaseV2 já traz o .field__group em coluna; só o modificador de linha falta.
+.section-card .field__group.row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: size(16);
+}

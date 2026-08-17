@@ -18,6 +18,10 @@ $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 
 @import '../../../BaseV2/assets-src/sass/theme-BaseV2';
 
+@import './components/section-card';
+@import './components/check-row';
+@import './components/field-group';
+
 // O BaseV2 agrupa small com os títulos e aplica a fonte de títulos nos dois.
 small {
     font-family: var(--mc-font-body);

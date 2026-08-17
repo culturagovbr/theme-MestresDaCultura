@@ -22,6 +22,66 @@
     }
 }
 
+.panel {
+    gap: size(32);
+    grid-template-columns: size(280) 1fr;
+    max-width: size(1170);
+    padding: size(40) size(16);
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        padding: size(20) size(16);
+    }
+}
+
+.panel__sidebar {
+    background: var(--mc-gray-100);
+    border-radius: var(--mc-border-radius-sm);
+    border-right: none;
+    height: fit-content;
+    padding: size(20);
+
+    // O BaseV2 esconde o menu no mobile; sem isso a caixa ficaria visível e vazia.
+    @include mobile {
+        display: none;
+    }
+}
+
+.panel-nav {
+    height: auto;
+    padding: 0;
+
+    h3 {
+        font-size: size(13);
+        margin-bottom: size(12);
+        padding: 0;
+    }
+
+    ul {
+        gap: size(6);
+    }
+
+    a {
+        border-radius: size(6);
+        gap: size(12);
+        padding: size(12);
+
+        &:focus,
+        &:hover {
+            background-color: var(--mc-white);
+            color: inherit;
+        }
+
+        .iconify {
+            color: $olive;
+            flex-shrink: 0;
+            height: size(20);
+            margin-right: 0;
+            width: size(20);
+        }
+    }
+}
+
 .panel--meus-cadastros {
     &__title {
         font-size: size(20);

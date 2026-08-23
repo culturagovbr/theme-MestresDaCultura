@@ -83,12 +83,6 @@
         gap: size(12);
         padding: size(12);
 
-        &:focus,
-        &:hover {
-            background-color: var(--mc-white);
-            color: inherit;
-        }
-
         .iconify {
             color: $olive;
             flex-shrink: 0;
@@ -98,17 +92,29 @@
         }
     }
 
+    a:focus,
+    a:hover {
+        background-color: var(--mc-gray-100);
+        color: inherit;
+    }
+
     &__item--pending {
         color: var(--mc-gray-500);
         cursor: default;
     }
 
-    // O BaseV2 pinta o ícone de branco no hover do bloco do usuário, e aqui o fundo
-    // do hover é branco — o ícone sumia.
+    // O BaseV2 troca o ícone do grupo do usuário para branco no hover, e aqui o realce é claro.
     &__right--user li:focus .iconify,
     &__right--user li:hover .iconify {
         color: $olive;
     }
+}
+
+// Mesmo componente, dois fundos: no cabeçalho o menu abre sobre branco, na barra lateral
+// sobre cinza — lá o realce claro precisa ser o branco para aparecer.
+.panel__sidebar .panel-nav a:focus,
+.panel__sidebar .panel-nav a:hover {
+    background-color: var(--mc-white);
 }
 
 .panel--meus-cadastros {

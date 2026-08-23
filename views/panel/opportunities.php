@@ -1,11 +1,19 @@
 <?php
 use MapasCulturais\i;
+
+// O tema roda sobre uma oportunidade fixa; só o super administrador do SaaS cria por aqui.
+$can_create = $app->user->is('saasSuperAdmin');
+
 $this->import('
     mc-icon
     opportunity-importer
     panel--entity-card
     panel--entity-tabs
 ');
+
+if ($can_create) {
+    $this->import('create-opportunity');
+}
 ?>
 
 <div class="panel-page">
@@ -22,6 +30,14 @@ $this->import('
             <?= i::_e('Nesta seção você pode adicionar e gerenciar suas oportunidades') ?>
         </p>
         <div class="panel-page__header-actions">
+            <?php if ($can_create): ?>
+            <create-opportunity :editable="true" #default="{modal}">
+                <button @click="modal.open()" class="button button--primary button--icon">
+                    <mc-icon name="add"></mc-icon>
+                    <span><?= i::__('Criar Oportunidade') ?></span>
+                </button>
+            </create-opportunity>
+            <?php endif; ?>
             <opportunity-importer></opportunity-importer>
         </div>
     </header>

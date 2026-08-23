@@ -25,8 +25,38 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             $iconset['registration'] = 'mdi:file-account';
         });
 
+        $criarCadastro = [
+            'label' => i::__('Criar novo cadastro'),
+            'column' => 'left',
+            'items' => [
+                // Sem rota até a oportunidade fixa existir; renderiza sem link.
+                ['icon' => 'master', 'label' => i::__('Criar Cadastro de Mestre/Mestra')],
+                ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Criar Cadastro de Festejo Popular')],
+            ],
+        ];
+
         // Prioridade alta para rodar depois dos módulos que alimentam a lista.
-        $app->hook('panel.nav', function (&$nav_items) use ($app) {
+        $app->hook('panel.nav', function (&$nav_items) use ($app, $criarCadastro) {
+            // saasSuperAdmin não é restringido: mantém o menu do core, sem as condições que
+            // app.enabled.* impõe, e só ganha o grupo do programa.
+            if ($app->user->is('saasSuperAdmin')) {
+                foreach ($nav_items as &$grupo) {
+                    unset($grupo['condition']);
+
+                    if (isset($grupo['items'])) {
+                        foreach ($grupo['items'] as &$item) {
+                            unset($item['condition']);
+                        }
+                        unset($item);
+                    }
+                }
+                unset($grupo);
+
+                $nav_items = ['mdc-criar' => $criarCadastro] + $nav_items;
+
+                return;
+            }
+
             // Preserva o item original, que carrega a condição de avaliador.
             $avaliacoes = array_values(array_filter(
                 $nav_items['opportunities']['items'] ?? [],
@@ -42,15 +72,7 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             )));
 
             $grupos = [
-                'mdc-criar' => [
-                    'label' => i::__('Criar novo cadastro'),
-                    'column' => 'left',
-                    'items' => [
-                        // Sem rota até a oportunidade fixa existir; renderiza sem link.
-                        ['icon' => 'master', 'label' => i::__('Criar Cadastro de Mestre/Mestra')],
-                        ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Criar Cadastro de Festejo Popular')],
-                    ],
-                ],
+                'mdc-criar' => $criarCadastro,
                 // Coluna "user": o componente a renderiza depois de um traço e sem título.
                 'user' => [
                     'label' => '',

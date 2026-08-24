@@ -29,8 +29,7 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             'label' => i::__('Criar novo cadastro'),
             'column' => 'left',
             'items' => [
-                // Sem rota até a oportunidade fixa existir; renderiza sem link.
-                ['icon' => 'master', 'label' => i::__('Criar Cadastro de Mestre/Mestra')],
+                ['route' => 'mdc/index', 'icon' => 'master', 'label' => i::__('Criar Cadastro de Mestre/Mestra')],
                 ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Criar Cadastro de Festejo Popular')],
             ],
         ];

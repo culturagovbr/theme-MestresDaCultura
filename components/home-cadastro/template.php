@@ -15,7 +15,7 @@ $this->import('mc-icon');
             <?= $this->text('title-mestre', i::__('Sou mestre ou mestra')) ?>
         </div>
         <p class="section-card__subtitle"><?= $this->text('description-mestre', i::__('Cadastre-se na Rede Nacional e gere seu portfólio automaticamente.')) ?></p>
-        <a class="button button--secondary button--large" href="#"><?php i::_e('Fazer meu cadastro') ?></a>
+        <a class="button button--secondary button--large" href="<?= $app->createUrl('mdc', 'index') ?>"><?php i::_e('Fazer meu cadastro') ?></a>
     </div>
 
     <div class="section-card">

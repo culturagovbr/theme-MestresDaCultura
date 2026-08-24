@@ -46,7 +46,7 @@ $current_controller = $this->controller?->id;
                 <?php $this->applyTemplateHook('mc-header-menu-home', 'after') ?>
 
                 <li>
-                    <a href="#" class="mc-header-menu--item">
+                    <a href="<?= $app->createUrl('mdc', 'index') ?>" class="mc-header-menu--item">
                         <span class="icon"> <mc-icon name="master"></mc-icon> </span>
                         <p class="label"> <?php i::_e('Cadastro de<br>Mestres e Mestras') ?> </p>
                     </a>

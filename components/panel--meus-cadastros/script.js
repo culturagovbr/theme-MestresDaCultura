@@ -15,16 +15,30 @@ app.component('panel--meus-cadastros', {
     },
 
     async created() {
-        const registrationAPI = new API('registration');
+        const { opportunityId, subsiteId } = $MAPAS.config.panelMeusCadastros ?? {};
+
+        if (!opportunityId) {
+            this.loading = false;
+            return;
+        }
+
+        const query = {
+            '@select': 'id,number,status,singleUrl,opportunity.{name},sentTimestamp,updateTimestamp',
+            '@order': 'updateTimestamp DESC',
+            // `view` esconderia o rascunho do próprio dono: o cache de permissão não o guarda.
+            '@permissions': '@control',
+            'opportunity': `EQ(${opportunityId})`,
+            'status': 'GTE(0)',
+            'user': 'EQ(@me)',
+        };
+
+        // Checagem dupla, proposital: o edital diz o quê, o subsite diz de onde.
+        if (subsiteId) {
+            query._subsiteId = `EQ(${subsiteId})`;
+        }
 
         try {
-            this.registrations = await registrationAPI.find({
-                '@select': 'id,number,status,singleUrl,opportunity.{name},sentTimestamp,updateTimestamp',
-                '@order': 'updateTimestamp DESC',
-                '@permissions': 'view',
-                'status': 'GTE(0)',
-                'user': 'EQ(@me)',
-            });
+            this.registrations = await new API('registration').find(query);
         } finally {
             this.loading = false;
         }

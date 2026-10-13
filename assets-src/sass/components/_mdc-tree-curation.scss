@@ -1,0 +1,57 @@
+// Página de curadoria da Árvore de Atuação: componente mdc-tree-curation, do plugin MDC.
+.mdc-tree-curation {
+    display: flex;
+    flex-direction: column;
+    gap: size(12);
+    // O painel do item fica ao lado do mapa só quando cabe na área.
+    container-type: inline-size;
+
+    &__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: size(8) size(14);
+    }
+
+    &__check {
+        display: inline-flex;
+        align-items: center;
+        gap: size(6);
+        cursor: pointer;
+    }
+
+    &__work {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: size(14);
+
+        @container (min-width: 1100px) {
+            grid-template-columns: minmax(0, 1fr) size(340);
+        }
+    }
+
+    &__panel {
+        display: flex;
+        flex-direction: column;
+        gap: size(6);
+        min-width: 0;
+        padding: size(16);
+        border: var(--mc-border-hairline);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+    }
+
+    &__hint,
+    &__path {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+
+    &__name {
+        margin: 0;
+        font-family: var(--mc-font-headings);
+        font-size: size(20);
+    }
+}

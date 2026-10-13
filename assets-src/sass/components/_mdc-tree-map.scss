@@ -1,0 +1,191 @@
+// Mapa da curadoria da Árvore de Atuação: componente mdc-tree-map, do plugin MDC.
+// O texto do SVG em px, nos mesmos tamanhos e pesos com que o componente mede a largura das caixas.
+
+// Uma cor da paleta do programa por segmento, na ordem da árvore.
+$mdc-tree-segments: (
+    1: $secondary-500,
+    2: $secondary-700,
+    3: $primary-500,
+    4: $olive,
+    5: $red,
+    6: $orange,
+    7: #025F01,
+);
+
+.mdc-tree-map {
+    position: relative;
+    height: clamp(420px, 62vh, 760px);
+    overflow: hidden;
+    border: var(--mc-border-hairline);
+    border-radius: var(--mc-border-radius-sm);
+    background: var(--mc-white);
+
+    &__canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+    &__link {
+        fill: none;
+        stroke: var(--mc-gray-300);
+        stroke-width: 1.4;
+
+        &--off {
+            stroke-dasharray: 4 4;
+        }
+    }
+
+    &__node {
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus-visible .mdc-tree-map__ring,
+        &--selected .mdc-tree-map__ring {
+            stroke: var(--mc-primary-500);
+        }
+    }
+
+    &__ring {
+        fill: none;
+        stroke: transparent;
+        stroke-width: 2.5;
+    }
+
+    &__box {
+        fill: var(--mc-white);
+        stroke: var(--mc-gray-300);
+        stroke-width: 1.2;
+    }
+
+    &__label {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
+        fill: var(--mc-black);
+        pointer-events: none;
+    }
+
+    &__count {
+        font-size: 10px;
+        font-weight: 600;
+        fill-opacity: 0.62;
+    }
+
+    &__node--depth-0 {
+        .mdc-tree-map__box {
+            fill: var(--mc-primary-700);
+            stroke: var(--mc-primary-700);
+        }
+
+        .mdc-tree-map__label {
+            font-size: 15px;
+            font-weight: 700;
+            fill: var(--mc-white);
+        }
+    }
+
+    &__node--depth-1 .mdc-tree-map__label {
+        font-size: 13px;
+        font-weight: 700;
+        fill: var(--mc-white);
+    }
+
+    @each $segment, $color in $mdc-tree-segments {
+        &__node--segment-#{$segment} {
+            &.mdc-tree-map__node--depth-1 .mdc-tree-map__box {
+                fill: $color;
+                stroke: $color;
+            }
+
+            &.mdc-tree-map__node--depth-2 .mdc-tree-map__box {
+                fill: mix($color, #FFFFFF, 16%);
+                stroke: $color;
+            }
+
+            .mdc-tree-map__toggle circle {
+                stroke: $color;
+            }
+        }
+    }
+
+    &__node--off {
+        opacity: 0.55;
+
+        .mdc-tree-map__box {
+            stroke-dasharray: 5 4;
+        }
+
+        .mdc-tree-map__name {
+            text-decoration: line-through;
+        }
+    }
+
+    &__toggle {
+        cursor: pointer;
+
+        circle {
+            fill: var(--mc-white);
+            stroke: var(--mc-gray-300);
+            stroke-width: 1.5;
+        }
+
+        text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 9.5px;
+            font-weight: 700;
+            fill: var(--mc-black);
+        }
+    }
+
+    &__zoom {
+        position: absolute;
+        top: size(10);
+        right: size(10);
+        display: flex;
+        flex-direction: column;
+        gap: size(4);
+    }
+
+    &__legend {
+        position: absolute;
+        left: size(12);
+        bottom: size(10);
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(4) size(14);
+        max-width: calc(100% - #{size(24)});
+        margin: 0;
+        padding: size(6) size(10);
+        border-radius: var(--mc-border-radius-xs);
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--mc-gray-700);
+        font-size: size(12);
+
+        span {
+            display: inline-flex;
+            align-items: center;
+            gap: size(6);
+        }
+    }
+
+    &__swatch {
+        display: inline-block;
+        width: size(18);
+        height: size(10);
+        border: 1.5px solid var(--mc-gray-500);
+        border-radius: 3px;
+
+        &--off {
+            border-style: dashed;
+            opacity: 0.6;
+        }
+    }
+}

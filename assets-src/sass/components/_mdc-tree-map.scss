@@ -194,3 +194,20 @@ $mdc-tree-segments: (
 .mdc-tree-map__node--match:not(.mdc-tree-map__node--selected) .mdc-tree-map__ring {
     stroke: $yellow;
 }
+
+// Possível duplicata: ponto amarelo no canto da caixa.
+.mdc-tree-map {
+    &__flag {
+        fill: $yellow;
+        stroke: var(--mc-white);
+        stroke-width: 2;
+    }
+
+    &__dot {
+        display: inline-block;
+        width: size(10);
+        height: size(10);
+        border-radius: 50%;
+        background: $yellow;
+    }
+}

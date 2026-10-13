@@ -1,0 +1,59 @@
+// Campo "Atuação Cultural": componentes mdc-acting-field e mdc-acting-list, do plugin MDC.
+// As linhas usam .check-row, as caixas aninhadas .subtipologia-box e o "Outro" o .field do BaseV2.
+.mdc-acting-field {
+    display: flex;
+    flex-direction: column;
+    gap: size(12);
+
+    &__hint,
+    &__empty {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+        margin: 0;
+    }
+
+    &__selected {
+        display: flex;
+        flex-direction: column;
+        gap: size(8);
+    }
+
+    &__selected-title {
+        font-size: size(13);
+        font-weight: 700;
+    }
+
+    .mc-tag-list__tag {
+        background: var(--mc-primary-300);
+        color: var(--mc-primary-700);
+    }
+
+    .mc-tag-list__tag.mdc-acting-field__tag--segment {
+        background: var(--mc-secondary-300);
+        color: var(--mc-secondary-700);
+    }
+
+    // Com o erro no campo inteiro, os "Outro" mantêm o visual normal; a mensagem segue embaixo.
+    .field.error & .field input[type="text"] {
+        background: none;
+        border: size(1) solid var(--mc-gray-500);
+        padding: size(14);
+    }
+
+    &__segment-title {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        gap: size(10);
+    }
+}
+
+.mdc-acting-list {
+    display: flex;
+    flex-direction: column;
+
+    // O "Outro" é um .field como os demais; só se afasta das opções acima dele.
+    & > .field {
+        margin-top: size(8);
+    }
+}

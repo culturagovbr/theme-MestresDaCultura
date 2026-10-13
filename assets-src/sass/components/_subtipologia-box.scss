@@ -1,0 +1,14 @@
+// Caixa que abre debaixo de um item marcado e lista o nível seguinte da árvore de atuação.
+.subtipologia-box {
+    background: var(--mc-gray-100);
+    border-radius: size(4);
+    margin-top: size(8);
+    padding: size(12) size(16);
+
+    &__title {
+        color: var(--mc-gray-700);
+        display: block;
+        font-size: size(12);
+        font-weight: 700;
+    }
+}

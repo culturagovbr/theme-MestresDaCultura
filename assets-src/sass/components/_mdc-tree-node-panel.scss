@@ -248,3 +248,31 @@
         cursor: pointer;
     }
 }
+
+// Histórico do item: recolhido, abre com a linha do tempo.
+.mdc-tree-node-panel {
+    &__history {
+        summary {
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        ol {
+            display: flex;
+            flex-direction: column;
+            gap: size(8);
+            margin: size(8) 0 0;
+            padding-left: size(18);
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+        }
+
+        small {
+            color: var(--mc-gray-700);
+            font-size: size(12);
+        }
+    }
+}

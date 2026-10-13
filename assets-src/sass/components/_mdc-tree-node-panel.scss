@@ -148,3 +148,28 @@
         font-size: size(13);
     }
 }
+
+// Ações do item: os botões abrem mc-modal; o texto de apoio explica a regra.
+.mdc-tree-node-panel {
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: size(6);
+    }
+
+    &__hint {
+        flex-basis: 100%;
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+
+    &__effects {
+        display: flex;
+        flex-direction: column;
+        gap: size(4);
+        margin: size(8) 0 0;
+        padding-left: size(18);
+    }
+}

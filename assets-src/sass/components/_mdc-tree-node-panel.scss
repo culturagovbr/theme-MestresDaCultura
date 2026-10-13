@@ -173,3 +173,44 @@
         padding-left: size(18);
     }
 }
+
+// Destinos de "Mover": lista com busca; o escolhido fica marcado.
+.mdc-tree-node-panel {
+    &__picker {
+        max-height: size(260);
+        margin: size(8) 0 0;
+        padding: 0;
+        overflow-y: auto;
+        border: var(--mc-border-hairline);
+        border-radius: var(--mc-border-radius-xs);
+        list-style: none;
+
+        li + li {
+            border-top: var(--mc-border-hairline);
+        }
+
+        .mdc-tree-node-panel__empty {
+            padding: size(7) size(10);
+        }
+    }
+
+    &__pick {
+        width: 100%;
+        padding: size(7) size(10);
+        border: 0;
+        background: none;
+        text-align: left;
+        overflow-wrap: anywhere;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--mc-gray-100);
+        }
+
+        &[aria-pressed="true"] {
+            background: var(--mc-primary-300);
+            font-weight: 600;
+        }
+    }
+}

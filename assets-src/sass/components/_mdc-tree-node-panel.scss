@@ -1,0 +1,150 @@
+// Painel do item na curadoria da Árvore de Atuação: componente mdc-tree-node-panel, do plugin MDC.
+.mdc-tree-node-panel {
+    display: flex;
+    flex-direction: column;
+    gap: size(14);
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        gap: size(6);
+    }
+
+    &__path {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(13);
+        overflow-wrap: anywhere;
+    }
+
+    &__name {
+        margin: 0;
+        font-family: var(--mc-font-headings);
+        font-size: size(20);
+        overflow-wrap: anywhere;
+    }
+
+    &__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(6);
+    }
+
+    &__chip {
+        padding: size(2) size(8);
+        border-radius: 999px;
+        background: var(--mc-gray-100);
+        font-size: size(11);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+
+        &--on {
+            background: mix(#025F01, #FFFFFF, 14%);
+            color: #025F01;
+        }
+
+        &--off {
+            background: var(--mc-secondary-300);
+            color: var(--mc-secondary-700);
+        }
+    }
+
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(size(96), 1fr));
+        gap: size(8);
+    }
+
+    &__stat {
+        display: flex;
+        flex-direction: column;
+        padding: size(8) size(10);
+        border-radius: var(--mc-border-radius-xs);
+        background: var(--mc-gray-100);
+
+        strong {
+            font-family: var(--mc-font-headings);
+            font-size: size(20);
+            font-variant-numeric: tabular-nums;
+        }
+
+        span {
+            color: var(--mc-gray-700);
+            font-size: size(12);
+        }
+    }
+
+    &__order {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: size(6);
+        color: var(--mc-gray-700);
+        font-size: size(13);
+
+        .button {
+            white-space: nowrap;
+        }
+    }
+
+    &__children {
+        display: flex;
+        flex-direction: column;
+        gap: size(6);
+
+        h3 {
+            margin: 0;
+            font-size: size(15);
+        }
+
+        ul {
+            max-height: size(280);
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+            border: var(--mc-border-hairline);
+            border-radius: var(--mc-border-radius-xs);
+            list-style: none;
+        }
+
+        li + li {
+            border-top: var(--mc-border-hairline);
+        }
+    }
+
+    &__child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: size(10);
+        width: 100%;
+        padding: size(7) size(10);
+        border: 0;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--mc-gray-100);
+        }
+
+        small {
+            color: var(--mc-gray-700);
+            font-size: size(12);
+            font-variant-numeric: tabular-nums;
+        }
+
+        &--off > span {
+            color: var(--mc-gray-700);
+            text-decoration: line-through;
+        }
+    }
+
+    &__empty {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+}

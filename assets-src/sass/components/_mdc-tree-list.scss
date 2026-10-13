@@ -1,0 +1,102 @@
+// Árvore em lista na curadoria (alternativa acessível ao mapa): componente mdc-tree-list, do plugin MDC.
+.mdc-tree-list {
+    max-height: clamp(420px, 62vh, 760px);
+    overflow-y: auto;
+    border: var(--mc-border-hairline);
+    border-radius: var(--mc-border-radius-sm);
+    background: var(--mc-white);
+
+    &__tree {
+        margin: 0;
+        padding: size(6) 0;
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: size(8);
+        padding: size(6) size(12) size(6) calc(#{size(12)} + (var(--level) - 1) * #{size(20)});
+        cursor: pointer;
+
+        &:hover {
+            background: var(--mc-gray-100);
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--mc-primary-500);
+            outline-offset: -3px;
+        }
+
+        &--selected {
+            background: var(--mc-primary-300);
+            font-weight: 600;
+        }
+
+        &--match:not(.mdc-tree-list__item--selected) {
+            box-shadow: inset 4px 0 0 $yellow;
+        }
+
+        &--off .mdc-tree-list__name {
+            color: var(--mc-gray-700);
+            text-decoration: line-through;
+        }
+    }
+
+    &__toggle {
+        flex: 0 0 size(22);
+        width: size(22);
+        height: size(22);
+        padding: 0;
+        border: var(--mc-border-hairline);
+        border-radius: 50%;
+        background: var(--mc-white);
+        font-weight: 700;
+        line-height: 1;
+        cursor: pointer;
+
+        &--leaf {
+            border: 0;
+            background: none;
+            cursor: default;
+        }
+    }
+
+    &__name {
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    &__tag {
+        padding: size(1) size(6);
+        border-radius: 999px;
+        background: var(--mc-gray-100);
+        color: var(--mc-gray-700);
+        font-size: size(11);
+        white-space: nowrap;
+
+        &--duplicate {
+            background: mix($yellow, #FFFFFF, 30%);
+            color: var(--mc-black);
+        }
+    }
+
+    &__count {
+        color: var(--mc-gray-700);
+        font-size: size(12);
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+// Na tela estreita, a barra empilha e o mapa encolhe.
+@media (max-width: 720px) {
+    .mdc-tree-map {
+        height: 60vh;
+    }
+
+    .mdc-tree-search {
+        flex-basis: 100%;
+        max-width: none;
+    }
+}

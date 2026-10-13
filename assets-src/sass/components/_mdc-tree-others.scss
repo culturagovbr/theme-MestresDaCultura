@@ -1,0 +1,130 @@
+// Fila "Não encontrou?" da curadoria da Árvore de Atuação: componente mdc-tree-others, do plugin MDC.
+.mdc-tree-others {
+    display: flex;
+    flex-direction: column;
+    gap: size(10);
+
+    &__intro,
+    &__empty,
+    &__hint {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+
+    &__item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: size(10) size(16);
+        padding: size(14) size(16);
+        border: var(--mc-border-hairline);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+
+        @media (max-width: 720px) {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: size(4);
+        min-width: 0;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: size(16);
+        font-weight: 700;
+        overflow-wrap: anywhere;
+    }
+
+    &__meta {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(13);
+        overflow-wrap: anywhere;
+    }
+
+    &__suggestions {
+        display: flex;
+        flex-direction: column;
+        gap: size(2);
+        margin: size(2) 0 0;
+        padding-left: size(18);
+    }
+
+    &__link {
+        padding: 0;
+        border: 0;
+        background: none;
+        color: var(--mc-primary-500);
+        font-weight: 600;
+        text-align: left;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: size(6);
+    }
+
+    &__decided {
+        padding: size(10) size(14);
+        border: var(--mc-border-hairline);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+
+        summary {
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: size(6);
+            margin: size(10) 0 0;
+            padding-left: size(18);
+        }
+    }
+
+    &__picker {
+        max-height: size(240);
+        margin: size(8) 0;
+        padding: 0;
+        overflow-y: auto;
+        border: var(--mc-border-hairline);
+        border-radius: var(--mc-border-radius-xs);
+        list-style: none;
+
+        li + li {
+            border-top: var(--mc-border-hairline);
+        }
+    }
+
+    &__pick {
+        width: 100%;
+        padding: size(7) size(10);
+        border: 0;
+        background: none;
+        text-align: left;
+        overflow-wrap: anywhere;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--mc-gray-100);
+        }
+
+        &[aria-pressed="true"] {
+            background: var(--mc-primary-300);
+            font-weight: 600;
+        }
+    }
+}

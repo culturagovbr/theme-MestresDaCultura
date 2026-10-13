@@ -1,0 +1,65 @@
+// Busca da curadoria da Árvore de Atuação: componente mdc-tree-search, do plugin MDC.
+// O campo é o .field do BaseV2; aqui fica só a lista de resultados.
+.mdc-tree-search {
+    position: relative;
+    flex: 1 1 size(220);
+    max-width: size(320);
+
+    &__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    &__results {
+        position: absolute;
+        z-index: 5;
+        top: calc(100% + #{size(4)});
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        max-height: size(320);
+        overflow-y: auto;
+        padding: size(4);
+        border: var(--mc-border-hairline);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+        box-shadow: var(--mc-shadow-lv1);
+    }
+
+    &__result {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: size(7) size(10);
+        border: 0;
+        border-radius: var(--mc-border-radius-xs);
+        background: none;
+        text-align: left;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--mc-gray-100);
+        }
+
+        small {
+            color: var(--mc-gray-700);
+            font-size: size(12);
+        }
+    }
+
+    &__off {
+        text-decoration: line-through;
+    }
+
+    &__empty {
+        margin: 0;
+        padding: size(8) size(10);
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+}

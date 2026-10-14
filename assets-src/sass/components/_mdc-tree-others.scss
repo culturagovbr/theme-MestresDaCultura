@@ -82,23 +82,64 @@
         gap: size(6);
     }
 
+    // Já tratados: recolhidos; abertos, um cartão por texto, mais leve que os pendentes.
     &__decided {
-        padding: size(10) size(14);
+        summary {
+            padding: size(10) 0;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+
+    &__done-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(size(280), 1fr));
+        gap: size(10);
+    }
+
+    &__done {
+        display: flex;
+        flex-direction: column;
+        gap: size(6);
+        min-width: 0;
+        padding: size(12) size(14);
         border: 1px solid var(--mc-gray-300);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
 
-        summary {
-            font-weight: 700;
-            cursor: pointer;
+        .mdc-tree-others__text {
+            font-size: size(15);
+        }
+    }
+
+    &__decision {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: size(4);
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+
+    &__badge {
+        padding: size(2) size(10);
+        border-radius: 999px;
+        font-size: size(12);
+        font-weight: 700;
+
+        &--created {
+            background: mix(#025F01, #FFFFFF, 14%);
+            color: #025F01;
         }
 
-        ul {
-            display: flex;
-            flex-direction: column;
-            gap: size(6);
-            margin: size(10) 0 0;
-            padding-left: size(18);
+        &--associated {
+            background: var(--mc-primary-300);
+            color: var(--mc-primary-700, var(--mc-black));
+        }
+
+        &--archived {
+            background: var(--mc-gray-100);
+            color: var(--mc-gray-700);
         }
     }
 

@@ -82,6 +82,45 @@
         gap: size(6);
     }
 
+    &__search {
+        max-width: size(520);
+    }
+
+    &__more {
+        align-self: center;
+        margin-top: size(4);
+    }
+
+    // Filtro dos tratados pela decisão: um botão por tipo, com a contagem.
+    &__filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(6);
+        margin-bottom: size(10);
+    }
+
+    &__chip {
+        padding: size(4) size(12);
+        border: 1px solid var(--mc-gray-300);
+        border-radius: 999px;
+        background: var(--mc-white);
+        color: var(--mc-black);
+        font-size: size(13);
+        cursor: pointer;
+
+        &[aria-pressed='true'] {
+            border-color: var(--mc-primary-500);
+            background: var(--mc-primary-500);
+            color: var(--mc-white);
+            font-weight: 700;
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--mc-primary-300);
+            outline-offset: 2px;
+        }
+    }
+
     // Já tratados: recolhidos; abertos, um cartão por texto, mais leve que os pendentes.
     &__decided {
         summary {

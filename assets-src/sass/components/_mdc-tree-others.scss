@@ -4,8 +4,16 @@
     flex-direction: column;
     gap: size(10);
 
+    &__empty {
+        padding: size(16);
+        border: 1px dashed var(--mc-gray-300);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+        color: var(--mc-gray-700);
+        text-align: center;
+    }
+
     &__intro,
-    &__empty,
     &__hint {
         margin: 0;
         color: var(--mc-gray-700);
@@ -18,7 +26,7 @@
         align-items: start;
         gap: size(10) size(16);
         padding: size(14) size(16);
-        border: var(--mc-border-hairline);
+        border: 1px solid var(--mc-gray-300);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
 
@@ -76,7 +84,7 @@
 
     &__decided {
         padding: size(10) size(14);
-        border: var(--mc-border-hairline);
+        border: 1px solid var(--mc-gray-300);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
 

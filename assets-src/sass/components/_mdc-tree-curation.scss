@@ -6,11 +6,95 @@
     // O painel do item fica ao lado do mapa só quando cabe na área.
     container-type: inline-size;
 
+    // O conteúdo das abas no fundo da página.
+    .tabs-component__panels {
+        padding: size(16) 0 0;
+        background: none;
+    }
+
+    // Linha de cima: busca, a escolha da visualização e a exportação; embaixo, os filtros.
     &__toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: size(10);
+        margin-bottom: size(12);
+    }
+
+    &__row {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: size(8) size(14);
+        justify-content: space-between;
+        gap: size(10) size(16);
+
+        .mdc-tree-search {
+            flex: 1 1 size(320);
+            max-width: size(520);
+        }
+    }
+
+    &__filters,
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: size(8) size(16);
+    }
+
+    &__actions {
+        gap: size(8) size(12);
+    }
+
+    // As ações do mapa ficam no canto do quadro, como o zoom no canto oposto.
+    &__stage {
+        position: relative;
+        min-width: 0;
+    }
+
+    &__map-tools {
+        position: absolute;
+        top: size(10);
+        left: size(10);
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(6);
+        max-width: calc(100% - #{size(70)});
+
+        .button {
+            background: var(--mc-white);
+        }
+    }
+
+    // Mapa | Lista: um controle só, com a opção atual preenchida.
+    &__views {
+        display: inline-flex;
+        border: 1px solid var(--mc-primary-500);
+        border-radius: var(--mc-border-radius-pill, 999px);
+        overflow: hidden;
+    }
+
+    &__view {
+        padding: size(6) size(16);
+        border: 0;
+        background: var(--mc-white);
+        color: var(--mc-primary-500);
+        font-size: size(14);
+        font-weight: 700;
+        cursor: pointer;
+
+        & + & {
+            border-left: 1px solid var(--mc-primary-500);
+        }
+
+        &[aria-pressed='true'] {
+            background: var(--mc-primary-500);
+            color: var(--mc-white);
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--mc-primary-300);
+            outline-offset: -3px;
+        }
     }
 
     &__check {
@@ -37,7 +121,7 @@
         gap: size(6);
         min-width: 0;
         padding: size(16);
-        border: var(--mc-border-hairline);
+        border: 1px solid var(--mc-gray-300);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
     }

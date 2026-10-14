@@ -16,7 +16,7 @@ $mdc-tree-segments: (
     position: relative;
     height: clamp(420px, 62vh, 760px);
     overflow: hidden;
-    border: var(--mc-border-hairline);
+    border: 1px solid var(--mc-gray-300);
     border-radius: var(--mc-border-radius-sm);
     background: var(--mc-white);
 

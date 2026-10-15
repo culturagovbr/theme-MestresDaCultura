@@ -174,4 +174,9 @@
         font-size: size(14);
         margin: 0;
     }
+
+    // Devolvido pela moderação em laranja.
+    &--pending .mc-status {
+        color: var(--mc-warning-500);
+    }
 }

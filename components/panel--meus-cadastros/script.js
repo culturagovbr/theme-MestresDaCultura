@@ -23,7 +23,7 @@ app.component('panel--meus-cadastros', {
         }
 
         const query = {
-            '@select': 'id,number,status,singleUrl,opportunity.{name},sentTimestamp,updateTimestamp',
+            '@select': 'id,number,status,singleUrl,opportunity.{name},sentTimestamp,updateTimestamp,editableFields,editSentTimestamp',
             '@order': 'updateTimestamp DESC',
             // `view` esconderia o rascunho do próprio dono: o cache de permissão não o guarda.
             '@permissions': '@control',
@@ -49,8 +49,20 @@ app.component('panel--meus-cadastros', {
             return registration.opportunity?.name || `${this.text('inscrição')} ${registration.number}`;
         },
 
+        // Devolvido pela moderação: segue no status 1, com campos reabertos e a correção ainda não reenviada.
+        pending(registration) {
+            return registration.status == 1 && registration.editableFields?.length > 0 && !registration.editSentTimestamp;
+        },
+
+        // O nome do status configurado na oportunidade; sem ele, o texto padrão.
         statusName(registration) {
-            return registration.status == 0 ? this.text('não enviada') : this.text('enviada');
+            if (this.pending(registration)) {
+                return this.text('pendente de moderação');
+            }
+
+            const labels = $MAPAS.config.panelMeusCadastros?.statusLabels ?? {};
+
+            return labels[registration.status] ?? (registration.status == 0 ? this.text('não enviada') : this.text('enviada'));
         },
 
         meta(registration) {

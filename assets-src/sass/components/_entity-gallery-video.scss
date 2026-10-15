@@ -1,0 +1,15 @@
+// Vídeo aberto da galeria: o player no fluxo, a legenda logo abaixo dele na mesma largura e a caixa reta e sem fundo.
+.entity-gallery__full--video {
+    border-radius: 0;
+    background: transparent;
+
+    iframe {
+        position: static;
+        width: min(800px, 90vw);
+        max-width: none;
+    }
+
+    .description {
+        width: min(800px, 90vw);
+    }
+}

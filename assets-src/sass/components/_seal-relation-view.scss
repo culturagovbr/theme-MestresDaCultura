@@ -1,0 +1,94 @@
+// Certificado do selo do programa: template do seal-relation-view sobrescrito no tema. A impressão do core abre só
+// o `#print` numa janela nova, com as mesmas folhas de estilo; a folha vale nas duas.
+.mdc-certificate {
+    max-width: size(1000);
+    margin: size(40) auto size(80);
+    padding: 0 size(16);
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: size(12);
+        margin-bottom: size(16);
+    }
+}
+
+.mdc-certificate__sheet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: size(16);
+    padding: size(56) size(48);
+    border: size(10) solid #F6EDC4;
+    outline: 2px solid #FF982A;
+    outline-offset: size(-18);
+    border-radius: var(--mc-border-radius-sm);
+    background: var(--mc-white);
+    text-align: center;
+    font-family: var(--mc-font-body);
+
+    p {
+        margin: 0;
+        font-family: inherit;
+    }
+
+    // O texto do certificado traz o nome como link para o perfil, em itálico no core; no certificado, é só o nome.
+    .mdc-certificate__text a,
+    .mdc-certificate__text i {
+        color: inherit;
+        font-style: normal;
+        font-weight: 700;
+        text-decoration: none;
+        pointer-events: none;
+    }
+}
+
+.mdc-certificate__eyebrow {
+    color: #F74E11;
+    font-size: size(14);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.mdc-certificate__title {
+    margin: 0;
+    color: #07162B;
+    font-family: var(--mc-font-headings);
+    font-size: size(36);
+}
+
+.mdc-certificate__text {
+    max-width: size(680);
+    color: var(--mc-gray-700);
+    font-size: size(20);
+    line-height: 1.6;
+}
+
+.mdc-certificate__date {
+    margin-top: size(16) !important;
+    color: var(--mc-gray-700);
+}
+
+.mdc-certificate__issuer {
+    margin-top: size(24) !important;
+    padding-top: size(16);
+    border-top: 1px solid var(--mc-gray-300);
+    color: var(--mc-gray-500);
+    font-size: size(13);
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    .mdc-certificate__sheet {
+        min-height: 180mm;
+        justify-content: center;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

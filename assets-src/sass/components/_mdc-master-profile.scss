@@ -1,0 +1,272 @@
+// Perfil público do mestre aprovado: componente mdc-master-profile, do plugin MDC, nos ganchos da página de agente do
+// core.
+
+// Tira o item "Agentes" do caminho na página do mestre.
+.single-1:has(.mdc-master-profile--header) .mc-breadcrumb li:has(a[href$="/agentes/"]) {
+    display: none;
+}
+
+// Esconde na página do mestre aprovado os dados pessoais (o e-mail público), as áreas de atuação genéricas do Mapa e
+// as verificações.
+.single-1:has(.mdc-master-profile--header) {
+    .agent-data,
+    aside .entity-terms,
+    aside .entity-seals {
+        display: none;
+    }
+
+    // Ícones das redes sociais e do compartilhar no laranja dos títulos.
+    aside .entity-social-media .iconify,
+    aside .mc-share-links .iconify,
+    aside .mc-share-links a {
+        color: #F74E11;
+    }
+
+    // Corpo em cartões.
+    main .grid-12 > .col-12:not(.complaint-suggestion) {
+        padding: size(24);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+        box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+    }
+}
+
+// Cabeçalho: a faixa nas cores da Rede; o título e o resto do bloco do plugin tomam o lugar do nome, do id, do tipo
+// e da descrição curta do agente.
+.entity-header:has(.mdc-master-profile--header) {
+    position: relative;
+    background: linear-gradient(180deg, #A9A62B 0%, #E6C267 60%, #FBD8AC 100%);
+
+    .rightSide .data,
+    .rightSide .description {
+        display: none;
+    }
+}
+
+.mdc-master-profile {
+    font-family: var(--mc-font-body);
+
+    p {
+        margin: 0;
+        font-family: inherit;
+    }
+
+    // Na coluna do título do core, que começa depois do avatar (215px dentro dos 1170px do conteúdo).
+    &--header {
+        position: absolute;
+        top: size(70);
+        right: size(16);
+        left: calc(max(#{size(16)}, 50% - #{size(585)}) + #{size(215)});
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: size(8);
+        color: var(--mc-white);
+
+        // No celular, o bloco vem logo abaixo do avatar e do título, centralizado.
+        @media (max-width: size(800)) {
+            position: static;
+            align-items: center;
+            padding: 0 size(16) size(32);
+            text-align: center;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        color: var(--mc-white);
+        font-family: var(--mc-font-headings);
+        font-size: size(36);
+        line-height: 1.15;
+        text-shadow: 0 1px 2px rgba(7, 22, 43, 0.35);
+    }
+
+    &__summary,
+    &__since {
+        color: var(--mc-white);
+        text-shadow: 0 1px 2px rgba(7, 22, 43, 0.35);
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: size(6);
+        margin-top: size(4);
+        padding: size(6) size(14);
+        border-radius: size(20);
+        background: #6B6800;
+        color: var(--mc-white);
+        font-size: size(13);
+        font-weight: 700;
+    }
+
+    // Lateral: o quadro do certificado, tracejado.
+    &--certificate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: size(10);
+        margin-bottom: size(24);
+        padding: size(24) size(20);
+        border: 2px dashed #F74E11;
+        border-radius: var(--mc-border-radius-sm);
+        text-align: center;
+
+        > .iconify {
+            color: #F74E11;
+            font-size: size(32);
+        }
+
+        h4 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--mc-gray-700);
+            font-size: size(14);
+        }
+
+        // Contornado em laranja.
+        .button {
+            border: 2px solid #F74E11;
+            background: var(--mc-white);
+            color: #F74E11;
+
+            &:hover,
+            &:focus-visible {
+                background: #F74E11;
+                color: var(--mc-white);
+            }
+        }
+    }
+
+    // Principal: a atuação em cartões por segmento, como na ficha da inscrição.
+    &--acting {
+
+        .mdc-acting-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(size(260), 1fr));
+            gap: size(12);
+        }
+
+        .mdc-acting-view__segment {
+            overflow: hidden;
+            border: 1px solid var(--mc-gray-300);
+            border-radius: var(--mc-border-radius-sm);
+            background: var(--mc-white);
+        }
+
+        .mdc-acting-view__title {
+            padding: size(8) size(14);
+            background: #FDCAB7;
+            color: #80104A;
+            font-size: size(13);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0 0 0 size(14);
+            list-style: none;
+        }
+
+        .mdc-acting-view__tree {
+            padding: size(10) size(14);
+        }
+
+        li {
+            padding: size(3) 0;
+        }
+
+        .mdc-acting-view__other {
+            color: #3F7FA1;
+            font-style: italic;
+        }
+    }
+}
+
+// Ícones laranja dos títulos (Material Design Icons), aplicados por máscara com o desenho embutido.
+$mdc-profile-icons: (
+    about: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='m19 2l-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5c.1 0 .15-.07.25-.07c1.35-.65 3.3-1.09 4.75-1.09c1.95 0 4.05.4 5.5 1.5c1.35-.85 3.8-1.5 5.5-1.5c1.65 0 3.35.31 4.75 1.06c.1.05.15.03.25.03c.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5c-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5'/%3E%3C/svg%3E"),
+    acting: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M9 2v6h2v3H5c-1.11 0-2 .89-2 2v3H1v6h6v-6H5v-3h6v3H9v6h6v-6h-2v-3h6v3h-2v6h6v-6h-2v-3c0-1.11-.89-2-2-2h-6V8h2V2z'/%3E%3C/svg%3E"),
+    videos: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11z'/%3E%3C/svg%3E"),
+    photos: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M22 16V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-11-4l2.03 2.71L16 11l4 5H8M2 6v14a2 2 0 0 0 2 2h14v-2H4V6'/%3E%3C/svg%3E"),
+);
+
+// Título de seção do perfil: o ícone laranja antes e, quando `$text` vem, esse texto no lugar do original.
+@mixin mdc-profile-heading($icon, $text: null) {
+    display: flex;
+    align-items: center;
+    margin: 0 0 size(16);
+    color: var(--mc-black);
+    font-family: var(--mc-font-headings);
+    font-size: size(24);
+    font-weight: 700;
+
+    &::before {
+        content: '';
+        flex-shrink: 0;
+        width: size(24);
+        height: size(24);
+        margin-right: size(8);
+        background: #F74E11;
+        mask: map-get($mdc-profile-icons, $icon) center / contain no-repeat;
+    }
+
+    @if $text {
+        font-size: 0;
+
+        &::after {
+            content: $text;
+            font-size: size(24);
+        }
+    }
+}
+
+.single-1:has(.mdc-master-profile--header) main .grid-12 {
+    // A ordem das seções: Sobre, Atuação Cultural, Fotos do trabalho, Vídeos e Links.
+    > .col-12:has(.single-1__description) { order: 1; }
+    > .mdc-master-profile--acting { order: 2; }
+    > .entity-gallery:has(.entity-gallery__list--image) { order: 3; }
+    > .entity-gallery:has(.entity-gallery__list--video) { order: 4; }
+    > .entity-links { order: 5; }
+    > .complaint-suggestion { order: 6; }
+
+    .single-1__description {
+        @include mdc-profile-heading(about, 'Sobre');
+    }
+
+    .entity-gallery:has(.entity-gallery__list--image) .entity-gallery__title {
+        @include mdc-profile-heading(photos, 'Fotos do trabalho');
+    }
+
+    .entity-gallery:has(.entity-gallery__list--video) .entity-gallery__title,
+    .entity-links__title {
+        @include mdc-profile-heading(videos, 'Vídeos e Links');
+    }
+
+    // Com vídeos e links, os dois blocos do core viram um cartão só.
+    &:has(.entity-gallery__list--video) > .entity-links {
+        margin-top: size(-20);
+        padding-top: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        clip-path: inset(0 size(-16) size(-16) size(-16));
+
+        .entity-links__title {
+            display: none;
+        }
+    }
+
+    &:has(.entity-links) > .entity-gallery:has(.entity-gallery__list--video) {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.mdc-master-profile--acting h3 {
+    @include mdc-profile-heading(acting);
+}

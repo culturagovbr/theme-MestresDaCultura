@@ -1,0 +1,132 @@
+// Aviso do cadastro devolvido pela moderação: componente mdc-moderation-notice, do plugin MDC, no espaço de aviso das
+// abas da inscrição, na largura dos cartões da página.
+.mdc-moderation-notice {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: size(16);
+    min-width: 0;
+    font-family: var(--mc-font-body);
+
+    // Abaixo da largura máxima, os cartões da página ganham respiro nas laterais; o aviso acompanha.
+    @media (max-width: size(1202)) {
+        margin: 0 size(16);
+    }
+
+    // O texto com a fonte dos cartões da página.
+    p {
+        margin: 0;
+        font-family: inherit;
+    }
+
+    &__alert {
+        display: flex;
+        align-items: flex-start;
+        gap: size(12);
+        padding: size(16) size(24);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-warning-300);
+        color: var(--mc-gray-700);
+
+        .iconify {
+            flex-shrink: 0;
+            margin-top: size(3);
+        }
+    }
+
+    &__card .mc-card__title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(16);
+
+        h3 {
+            margin: 0;
+        }
+
+        // Laranja, como no protótipo e no painel; o mc-status não conhece esse nome.
+        .mc-status {
+            margin: 0;
+            color: var(--mc-warning-500);
+        }
+    }
+
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        gap: size(12);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__field {
+        display: flex;
+        align-items: flex-start;
+        gap: size(12);
+        padding: size(16) size(20);
+        border: 1px solid var(--mc-gray-300);
+        border-radius: var(--mc-border-radius-sm);
+
+        > .iconify {
+            flex-shrink: 0;
+            margin-top: size(2);
+            font-size: size(20);
+        }
+
+        &--invalid {
+            border-color: var(--mc-danger-500);
+            box-shadow: inset 4px 0 0 var(--mc-danger-500);
+
+            > .iconify,
+            .mdc-moderation-notice__field-title {
+                color: var(--mc-danger-500);
+            }
+        }
+
+        &--valid {
+            background: var(--mc-gray-100);
+
+            > .iconify,
+            .mdc-moderation-notice__field-title {
+                color: var(--mc-success-500);
+            }
+        }
+    }
+
+    &__field-body {
+        display: flex;
+        flex-direction: column;
+        gap: size(4);
+    }
+
+    &__field-title {
+        font-weight: 700;
+    }
+
+    &__field-label {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+
+    &__footer {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(16);
+        margin-top: size(24);
+    }
+
+    &__note {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+}
+
+// Com o aviso na página, esconde o "Editar informações enviadas" da linha do tempo; fica o "Corrigir e reenviar".
+.tabs-component:has(.mdc-moderation-notice) .editable-fields {
+    display: none;
+}

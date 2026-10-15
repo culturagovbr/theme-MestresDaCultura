@@ -1,0 +1,18 @@
+// Correção do cadastro devolvido pela moderação, nas telas do core.
+
+// Sem prazo: o core exige uma data-limite para reabrir campos, e a do plugin (01/01/2111) não deve aparecer ao
+// mestre. Neste cadastro as inscrições não fecham, então o único aviso da barra de ações na edição é o do prazo.
+.editable-fields small,
+.registration-actions__alert {
+    display: none;
+}
+
+// Fora dos campos reabertos, Estado e Município aparecem travados.
+.field.disabled .select-municipio .mc-select {
+    pointer-events: none;
+
+    .mc-select__selected-option {
+        background: var(--mc-gray-100);
+        color: var(--mc-gray-500);
+    }
+}

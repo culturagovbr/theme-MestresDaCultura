@@ -60,6 +60,7 @@ $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 @import './components/main-footer';
 @import './components/panel';
 @import './components/entity-actions';
+@import './components/opportunity-phases-config';
 
 // O BaseV2 agrupa small com os títulos e aplica a fonte de títulos nos dois.
 small {

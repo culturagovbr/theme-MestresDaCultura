@@ -17,3 +17,13 @@
         }
     }
 }
+
+// Na oportunidade do programa, quem não é saasSuperAdmin não duplica nem gera modelo (o plugin recusa no servidor e
+// põe esta classe no body). Os dois botões só pedem "modify" no core. Duplicar é o único botão da barra sem `type`;
+// Salvar modelo vem dentro de um .col-12. Arquivar e Excluir já somem pela permissão.
+.mdc-structure-locked .entity-actions__content--groupBtn.rowBtn {
+    > button:not([type]):not(.arquivar):not(.excluir),
+    > .col-12 {
+        display: none;
+    }
+}

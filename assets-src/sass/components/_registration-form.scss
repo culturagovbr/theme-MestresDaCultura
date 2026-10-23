@@ -1,5 +1,10 @@
 // Formulário de inscrição, sobre os componentes do core.
 
+// As etapas presas no topo ficam acima dos ícones das seções e das etiquetas da atuação.
+.registration__steps {
+    z-index: 2;
+}
+
 // Etapas: o número dentro do círculo e o nome de todas, não só o da atual. O nome vem do `title` que o core já põe
 // em cada etapa; o rótulo dele (só o número, fora da atual) fica escondido.
 .registration__steps .stepper {

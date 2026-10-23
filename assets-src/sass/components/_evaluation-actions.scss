@@ -1,0 +1,12 @@
+// Enquanto a avaliação do programa está sendo gravada (o plugin põe a classe no body, ver evaluation-lock.js), os
+// botões que gravam ficam esmaecidos e não recebem clique, também os do modal "Enviar agora / Enviar depois".
+.mdc-evaluation-busy {
+    .evaluation-actions__buttons__final,
+    .evaluation-actions__buttons__finalcontinue,
+    .evaluation-actions__buttons__send,
+    .evaluation-actions__buttons__reopen,
+    .evaluation-actions__buttons__saveafter {
+        opacity: .6;
+        pointer-events: none;
+    }
+}

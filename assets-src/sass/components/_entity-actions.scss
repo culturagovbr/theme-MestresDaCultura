@@ -1,0 +1,19 @@
+// Barra de salvar da edição (oportunidade, agente…) no creme da faixa da home, com Salvar, Salvar e publicar e Sair
+// no laranja e os botões menores (arquivar, duplicar…) em contorno cinza.
+.entity-actions {
+    background-color: $cream;
+    border-top: 1px solid var(--mc-secondary-300);
+    box-shadow: var(--mc-shadow-lv1-up);
+
+    &__content--groupBtn .button {
+        background: var(--mc-white);
+        border: 1px solid var(--mc-gray-300);
+        color: var(--mc-low-500);
+
+        &.publish {
+            background: var(--mc-secondary-500);
+            border-color: var(--mc-secondary-500);
+            color: var(--mc-white);
+        }
+    }
+}

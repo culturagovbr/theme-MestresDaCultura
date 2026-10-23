@@ -24,8 +24,8 @@
     }
 
     .mc-tag-list__tag {
-        background: var(--mc-primary-300);
-        color: var(--mc-primary-700);
+        background: $cream-dark;
+        color: var(--mc-low-500);
     }
 
     .mc-tag-list__tag.mdc-acting-field__tag--segment {

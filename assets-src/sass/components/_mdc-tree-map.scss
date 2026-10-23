@@ -5,7 +5,7 @@
 $mdc-tree-segments: (
     1: $secondary-500,
     2: $secondary-700,
-    3: $primary-500,
+    3: $blue,
     4: $olive,
     5: $red,
     6: $orange,
@@ -81,8 +81,8 @@ $mdc-tree-segments: (
 
     &__node--depth-0 {
         .mdc-tree-map__box {
-            fill: var(--mc-primary-700);
-            stroke: var(--mc-primary-700);
+            fill: $navy;
+            stroke: $navy;
         }
 
         .mdc-tree-map__label {

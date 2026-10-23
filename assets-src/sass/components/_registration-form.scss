@@ -5,6 +5,17 @@
     z-index: 2;
 }
 
+// Só a ação de avançar é cheia; voltar é o contorno cinza.
+.registration-actions__secondary .button--primary-outline {
+    border-color: var(--mc-gray-300);
+    color: var(--mc-gray-700);
+
+    &:hover {
+        border-color: var(--mc-gray-500);
+        color: var(--mc-low-500);
+    }
+}
+
 // Etapas: o número dentro do círculo e o nome de todas, não só o da atual. O nome vem do `title` que o core já põe
 // em cada etapa; o rótulo dele (só o número, fora da atual) fica escondido.
 .registration__steps .stepper {

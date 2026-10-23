@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700;800&display=swap');
 
-// O BaseV2 deriva -300 e -700 por lighten/darken de 25% sobre o -500; a paleta oficial não
-// segue essa derivação, então os três valores são declarados.
-$primary-500: #3F7FA1 !default;
-$primary-300: #C5D8E3 !default;
-$primary-700: #07162B !default;
+// O core pinta botões, links, abas e barras com a primária; o protótipo dá às ações o laranja-avermelhado e quase
+// não usa o azul. Por isso a primária é a mesma escala da secundária, e o azul e o azul-marinho da paleta ficam
+// só onde o tema os escolhe. O BaseV2 deriva -300 e -700 por lighten/darken; a paleta não segue essa derivação,
+// então os três valores são declarados.
+$primary-500: #F74E11 !default;
+$primary-300: #FDCAB7 !default;
+$primary-700: #80104A !default;
 
 $secondary-500: #F74E11 !default;
 $secondary-300: #FDCAB7 !default;
@@ -15,9 +17,17 @@ $orange: #FF982A !default;
 $yellow: #FCB601 !default;
 $red: #DF3D2D !default;
 $cream: #FCFAED !default;
+$cream-dark: #F6EDC4 !default;
+$blue: #3F7FA1 !default;
+$navy: #07162B !default;
+
+// Avisos informativos (mc-alert, info-message) em azul-marinho sobre o creme.
+$helper-500: $navy !default;
+$helper-300: $cream-dark !default;
+$helper-700: $navy !default;
 
 $opportunities-500: #F74E11 !default;
-$projects-500: #3F7FA1 !default;
+$projects-500: #80104A !default;
 
 $font-body: 'Open Sans', sans-serif !default;
 $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
@@ -49,10 +59,17 @@ $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 @import './components/home-mestres';
 @import './components/main-footer';
 @import './components/panel';
+@import './components/entity-actions';
 
 // O BaseV2 agrupa small com os títulos e aplica a fonte de títulos nos dois.
 small {
     font-family: var(--mc-font-body);
+}
+
+// As caixas de marcar e as opções são as do navegador, que as marca em azul.
+input[type='checkbox'],
+input[type='radio'] {
+    accent-color: var(--mc-secondary-500);
 }
 
 // Defeso eleitoral. Reversível: basta remover deste comentário até o fim do arquivo.

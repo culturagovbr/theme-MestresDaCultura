@@ -84,7 +84,7 @@
         padding: size(12);
 
         .iconify {
-            color: $olive;
+            color: var(--mc-secondary-500);
             flex-shrink: 0;
             height: size(20);
             margin-right: 0;
@@ -106,7 +106,15 @@
     // O BaseV2 troca o ícone do grupo do usuário para branco no hover, e aqui o realce é claro.
     &__right--user li:focus .iconify,
     &__right--user li:hover .iconify {
-        color: $olive;
+        color: var(--mc-secondary-500);
+    }
+
+    // A página atual no fundo claro da secundária, com texto escuro.
+    a.active,
+    a.active:focus,
+    a.active:hover {
+        background-color: var(--mc-secondary-300);
+        color: var(--mc-low-500);
     }
 }
 

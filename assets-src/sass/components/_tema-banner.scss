@@ -3,7 +3,7 @@
     // A assinatura cromática do programa: as cinco paradas da paleta oficial na borda superior.
     border-image: linear-gradient(90deg, $yellow, $orange, var(--mc-secondary-500), $red, var(--mc-secondary-700)) 1;
     border-top: size(6) solid transparent;
-    color: var(--mc-primary-700);
+    color: $navy;
     padding: size(48) size(24);
     text-align: center;
 

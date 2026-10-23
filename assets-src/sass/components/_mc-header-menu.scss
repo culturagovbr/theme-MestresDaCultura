@@ -36,3 +36,8 @@
         color: var(--mc-secondary-500);
     }
 }
+
+// O nome de quem está logado, no canto do cabeçalho, em preto.
+.mc-header-menu-user .user__name {
+    color: var(--mc-low-500);
+}

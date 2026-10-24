@@ -37,7 +37,8 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
         // Prioridade alta para rodar depois dos módulos que alimentam a lista.
         $app->hook('panel.nav', function (&$nav_items) use ($app, $criarCadastro) {
             // saasSuperAdmin não é restringido: mantém o menu do core, sem as condições que
-            // app.enabled.* impõe, e só ganha o grupo do programa.
+            // app.enabled.* impõe, e só ganha o grupo do programa. Os filtros do plugin (inscrições,
+            // painel, selos, notificações) isentam também o admin (MDC\Plugin::appliesToCurrentUser).
             if ($app->user->is('saasSuperAdmin')) {
                 foreach ($nav_items as &$grupo) {
                     unset($grupo['condition']);

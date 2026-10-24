@@ -1,0 +1,24 @@
+// Opções da fila da moderação na configuração da fase de moderação (componente mdc-moderation-queue-config, do
+// plugin MDC), logo abaixo da distribuição das avaliações: título como os das seções da fase e o campo de dias curto.
+.mdc-moderation-queue-config {
+    display: flex;
+    flex-direction: column;
+    gap: size(8);
+    padding-top: size(16);
+
+    &__title {
+        margin: 0;
+        font-size: size(18);
+        font-weight: 700;
+    }
+
+    // O texto com a fonte do restante da fase.
+    &__description {
+        margin: 0 0 size(8);
+        font-family: var(--mc-font-body);
+    }
+
+    input[type="number"] {
+        max-width: size(120);
+    }
+}

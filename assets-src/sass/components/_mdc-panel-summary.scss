@@ -1,0 +1,91 @@
+// Blocos do painel inicial conforme o papel (componente mdc-panel-summary do plugin MDC), no desenho de "Meus
+// cadastros" (_panel.scss): título, cartão com sombra leve.
+.mdc-panel-summary {
+    display: flex;
+    flex-direction: column;
+    gap: size(32);
+    margin-bottom: size(32);
+
+    &__title {
+        font-size: size(20);
+        margin-bottom: size(16);
+    }
+
+    .mc-card {
+        border-radius: var(--mc-border-radius-xs);
+        box-shadow: var(--mc-shadow-lv1);
+        padding: size(24);
+    }
+
+    .mc-card__content {
+        display: flex;
+        flex-direction: column;
+        gap: size(16);
+    }
+
+    &__lead {
+        align-items: baseline;
+        display: flex;
+        font-size: size(16);
+        gap: size(8);
+        margin: 0;
+    }
+
+    &__number {
+        color: var(--mc-primary-500);
+        font-size: size(32);
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    &__counts {
+        color: var(--mc-gray-700);
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(8) size(24);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__action {
+        align-self: flex-start;
+    }
+
+    &__situations {
+        display: grid;
+        gap: size(12);
+        grid-template-columns: repeat(5, 1fr);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include mobile {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        li {
+            border: var(--mc-border-hairline) var(--mc-gray-100);
+            border-radius: var(--mc-border-radius-xs);
+            display: flex;
+            flex-direction: column;
+            gap: size(4);
+            padding: size(12);
+        }
+
+        span {
+            color: var(--mc-gray-700);
+            font-size: size(13);
+        }
+    }
+
+    &__shortcuts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(12);
+
+        .button {
+            min-height: size(44);
+        }
+    }
+}

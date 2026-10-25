@@ -39,11 +39,16 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             // saasSuperAdmin não é restringido: mantém o menu do core, sem as condições que
             // app.enabled.* impõe, e só ganha o grupo do programa. Os filtros do plugin (inscrições,
             // painel, selos, notificações) isentam também o admin (MDC\Plugin::appliesToCurrentUser).
+            // Sem as telas que o subsite não usa, que não abrem nem para ele (MDC\Plugin::UNUSED_PANEL_SCREENS).
             if ($app->user->is('saasSuperAdmin')) {
+                $unused = array_map(fn($action) => "panel/{$action}", class_exists(\MDC\Plugin::class) ? \MDC\Plugin::UNUSED_PANEL_SCREENS : []);
+
                 foreach ($nav_items as &$grupo) {
                     unset($grupo['condition']);
 
                     if (isset($grupo['items'])) {
+                        $grupo['items'] = array_values(array_filter($grupo['items'], fn($item) => !in_array($item['route'] ?? '', $unused, true)));
+
                         foreach ($grupo['items'] as &$item) {
                             unset($item['condition']);
                         }
@@ -63,14 +68,6 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 fn($item) => ($item['route'] ?? '') === 'panel/evaluations'
             ));
 
-            $oportunidades = array_map(function ($item) use ($app) {
-                $item['condition'] = fn() => $app->user->is('admin');
-                return $item;
-            }, array_values(array_filter(
-                $nav_items['opportunities']['items'] ?? [],
-                fn($item) => ($item['route'] ?? '') === 'panel/opportunities'
-            )));
-
             $grupos = [
                 'mdc-criar' => $criarCadastro,
                 // Coluna "user": o componente a renderiza depois de um traço e sem título.
@@ -85,13 +82,22 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 ],
             ];
 
-            // Administração segue como o core e os plugins montaram, com os itens de gestão.
+            // Administração segue como o core e os plugins montaram. Sem "Minhas oportunidades": o gestor chega ao
+            // programa pela Gestão do cadastro (MDC\Plugin::addManagementShortcuts).
             if (isset($nav_items['admin'])) {
-                $nav_items['admin']['items'] = array_merge($nav_items['admin']['items'] ?? [], $oportunidades);
                 $grupos['admin'] = $nav_items['admin'];
             }
 
             $nav_items = $grupos;
         }, 1000);
+
+        // O core põe "Minhas oportunidades" no breadcrumb das telas da oportunidade de quem não é avaliador da fase;
+        // fora do saasSuperAdmin, ninguém tem essa página no menu. Como o Cultura Viva filtra o dele.
+        $app->hook('Theme::addOpportunityBreadcramb', function () use ($app) {
+            if (!$app->user->is('saasSuperAdmin')) {
+                $mine = $app->createUrl('panel', 'opportunities');
+                $this->breadcrumb = array_values(array_filter($this->breadcrumb ?? [], fn($crumb) => ($crumb['url'] ?? null) !== $mine));
+            }
+        });
     }
 }

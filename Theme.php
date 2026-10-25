@@ -91,13 +91,23 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             $nav_items = $grupos;
         }, 1000);
 
-        // O core põe "Minhas oportunidades" no breadcrumb das telas da oportunidade de quem não é avaliador da fase;
-        // fora do saasSuperAdmin, ninguém tem essa página no menu. Como o Cultura Viva filtra o dele.
+        // No breadcrumb da oportunidade, tira "Minhas oportunidades" fora do saasSuperAdmin e chama "Minhas avaliações"
+        // de "Moderação de cadastros".
         $app->hook('Theme::addOpportunityBreadcramb', function () use ($app) {
+            $crumbs = $this->breadcrumb ?? [];
+
             if (!$app->user->is('saasSuperAdmin')) {
                 $mine = $app->createUrl('panel', 'opportunities');
-                $this->breadcrumb = array_values(array_filter($this->breadcrumb ?? [], fn($crumb) => ($crumb['url'] ?? null) !== $mine));
+                $crumbs = array_filter($crumbs, fn($crumb) => ($crumb['url'] ?? null) !== $mine);
             }
+
+            $this->breadcrumb = array_values(array_map(function ($crumb) {
+                if (($crumb['label'] ?? null) === i::__('Minhas avaliações')) {
+                    $crumb['label'] = i::__('Moderação de cadastros');
+                }
+
+                return $crumb;
+            }, $crumbs));
         });
     }
 }

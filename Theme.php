@@ -36,10 +36,9 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
 
         // Prioridade alta para rodar depois dos módulos que alimentam a lista.
         $app->hook('panel.nav', function (&$nav_items) use ($app, $criarCadastro) {
-            // saasSuperAdmin não é restringido: mantém o menu do core, sem as condições que
-            // app.enabled.* impõe, e só ganha o grupo do programa. Os filtros do plugin (inscrições,
-            // painel, selos, notificações) isentam também o admin (MDC\Plugin::appliesToCurrentUser).
-            // Sem as telas que o subsite não usa, que não abrem nem para ele (MDC\Plugin::UNUSED_PANEL_SCREENS).
+            // saasSuperAdmin mantém o menu do core, sem as condições que app.enabled.* impõe, e só ganha o
+            // grupo do programa; perde as telas que o subsite não usa, que não abrem nem para ele
+            // (MDC\Plugin::UNUSED_PANEL_SCREENS).
             if ($app->user->is('saasSuperAdmin')) {
                 $unused = array_map(fn($action) => "panel/{$action}", class_exists(\MDC\Plugin::class) ? \MDC\Plugin::UNUSED_PANEL_SCREENS : []);
 

@@ -36,17 +36,21 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
 
         // Prioridade alta para rodar depois dos módulos que alimentam a lista.
         $app->hook('panel.nav', function (&$nav_items) use ($app, $criarCadastro) {
-            // saasSuperAdmin mantém o menu do core, sem as condições que app.enabled.* impõe, e só ganha o
-            // grupo do programa; perde as telas que o subsite não usa, que não abrem nem para ele
-            // (MDC\Plugin::UNUSED_PANEL_SCREENS).
-            if ($app->user->is('saasSuperAdmin')) {
-                $unused = array_map(fn($action) => "panel/{$action}", class_exists(\MDC\Plugin::class) ? \MDC\Plugin::UNUSED_PANEL_SCREENS : []);
+            // Tira as telas que o subsite não usa (MDC\Plugin::UNUSED_PANEL_SCREENS).
+            $unused = array_map(fn($action) => "panel/{$action}", class_exists(\MDC\Plugin::class) ? \MDC\Plugin::UNUSED_PANEL_SCREENS : []);
+            $semUso = function (array $grupo) use ($unused) {
+                $grupo['items'] = array_values(array_filter($grupo['items'] ?? [], fn($item) => !in_array($item['route'] ?? '', $unused, true)));
+                return $grupo;
+            };
 
+            // saasSuperAdmin mantém o menu do core, sem as condições que app.enabled.* impõe, e só ganha o
+            // grupo do programa.
+            if ($app->user->is('saasSuperAdmin')) {
                 foreach ($nav_items as &$grupo) {
                     unset($grupo['condition']);
 
                     if (isset($grupo['items'])) {
-                        $grupo['items'] = array_values(array_filter($grupo['items'], fn($item) => !in_array($item['route'] ?? '', $unused, true)));
+                        $grupo = $semUso($grupo);
 
                         foreach ($grupo['items'] as &$item) {
                             unset($item['condition']);
@@ -67,24 +71,24 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 fn($item) => ($item['route'] ?? '') === 'panel/evaluations'
             ));
 
-            $grupos = [
-                'mdc-criar' => $criarCadastro,
-                // Coluna "user": o componente a renderiza depois de um traço e sem título.
-                'user' => [
-                    'label' => '',
-                    'column' => 'user',
-                    'items' => array_merge([
-                        ['route' => 'panel/my-account', 'icon' => 'account', 'label' => i::__('Conta e Privacidade')],
-                    ], $avaliacoes, [
-                        ['route' => 'auth/logout', 'icon' => 'logout', 'label' => i::__('Sair')],
-                    ]),
-                ],
-            ];
+            // Os grupos do core como eles são, menos o que o subsite não usa: "Menu do Painel de Controle" (o caminho
+            // de volta a "Meus cadastros"), "Outras opções" (com a moderação, para quem modera) e o do usuário logado
+            // (Meu Perfil, Sair). Entre eles, o grupo do programa.
+            $grupos = array_filter(['panel-menu' => $nav_items['panel-menu'] ?? null]) + ['mdc-criar' => $criarCadastro];
+
+            if (isset($nav_items['more'])) {
+                $grupos['more'] = $semUso($nav_items['more']);
+                $grupos['more']['items'] = array_merge($grupos['more']['items'], $avaliacoes);
+            }
 
             // Administração segue como o core e os plugins montaram. Sem "Minhas oportunidades": o gestor chega ao
             // programa pela Gestão do cadastro (MDC\Plugin::addManagementShortcuts).
             if (isset($nav_items['admin'])) {
                 $grupos['admin'] = $nav_items['admin'];
+            }
+
+            if (isset($nav_items['user'])) {
+                $grupos['user'] = $nav_items['user'];
             }
 
             $nav_items = $grupos;

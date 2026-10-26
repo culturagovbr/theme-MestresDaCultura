@@ -123,7 +123,8 @@
         margin-top: size(24);
     }
 
-    &__approved {
+    &__approved,
+    &__review {
         color: var(--mc-gray-700);
     }
 

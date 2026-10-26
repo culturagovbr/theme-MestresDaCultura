@@ -115,3 +115,10 @@ $mdc-section-icons: (
         mask: $icon center / contain no-repeat;
     }
 }
+
+// Na ficha, no celular, as abas ficam abaixo dos botões Imprimir/Exportar PDF/Baixar Anexos.
+.controller-registration .registration.single .tabs-component {
+    @include mobile {
+        margin-top: 0;
+    }
+}

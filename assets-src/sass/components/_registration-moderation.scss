@@ -1,9 +1,9 @@
 // Correção do cadastro devolvido pela moderação, nas telas do core.
 
-// Sem prazo: o core exige uma data-limite para reabrir campos, e a do plugin (01/01/2111) não deve aparecer ao
-// mestre. Neste cadastro as inscrições não fecham, então o único aviso da barra de ações na edição é o do prazo.
+// Esconde a data-limite dos campos reabertos e os avisos de prazo da barra de ações; o de campos obrigatórios, com
+// cabeçalho, fica.
 .editable-fields small,
-.registration-actions__alert {
+.registration-actions__alert:not(:has(.registration-actions__alert-header)) {
     display: none;
 }
 

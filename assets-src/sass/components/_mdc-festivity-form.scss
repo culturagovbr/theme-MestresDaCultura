@@ -395,3 +395,59 @@
         accent-color: var(--mc-primary-500);
     }
 }
+
+// O festejo no cadastro dos Mestres (mdc-festivity-field): a busca e o escolhido, com o link para a página dele.
+.mdc-festivity-field {
+    display: flex;
+    flex-direction: column;
+    gap: size(8);
+
+    &__chosen {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(8);
+        padding: size(12) size(16);
+        border: 1px solid var(--mc-gray-300);
+        border-radius: size(8);
+
+        span {
+            display: flex;
+            flex-direction: column;
+        }
+
+        small {
+            color: var(--mc-gray-700);
+        }
+    }
+
+    &__legacy,
+    &__empty {
+        margin: 0;
+        color: var(--mc-gray-700);
+    }
+
+    &__results {
+        margin: 0;
+        padding: 0;
+        border: 1px solid var(--mc-gray-300);
+        border-radius: size(8);
+        list-style: none;
+    }
+
+    &__result {
+        width: 100%;
+        min-height: size(44);
+        padding: size(8) size(12);
+        border: 0;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--mc-gray-100);
+        }
+    }
+}

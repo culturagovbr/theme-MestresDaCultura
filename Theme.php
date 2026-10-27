@@ -72,9 +72,13 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             ));
 
             // Os grupos do core como eles são, menos o que o subsite não usa: "Menu do Painel de Controle" (o caminho
-            // de volta a "Meus cadastros"), "Outras opções" (com a moderação, para quem modera) e o do usuário logado
-            // (Meu Perfil, Sair). Entre eles, o grupo do programa.
+            // de volta a "Meus cadastros", e a lista dos festejos de quem cadastra), "Outras opções" (com a moderação,
+            // para quem modera) e o do usuário logado (Meu Perfil, Sair). Entre eles, o grupo do programa.
             $grupos = array_filter(['panel-menu' => $nav_items['panel-menu'] ?? null]) + ['mdc-criar' => $criarCadastro];
+
+            if (isset($grupos['panel-menu'])) {
+                $grupos['panel-menu']['items'][] = ['route' => 'panel/events', 'icon' => 'celebration', 'label' => i::__('Meus festejos')];
+            }
 
             if (isset($nav_items['more'])) {
                 $grupos['more'] = $semUso($nav_items['more']);

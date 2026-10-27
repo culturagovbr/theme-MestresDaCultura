@@ -1,0 +1,39 @@
+// Busca de Mestras e Mestres (componente mdc-masters-search, do plugin MDC), na estrutura da busca do core
+// (search-list). Os cartões são os da home (.mestres-grid); ao lado dos filtros, dois por linha.
+.mdc-masters-search {
+    &__fields {
+        display: flex;
+        flex-direction: column;
+        gap: size(16);
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: size(6);
+        }
+    }
+
+    &__clear {
+        align-self: flex-start;
+    }
+
+    &__count {
+        color: var(--mc-gray-700);
+        font-size: size(14);
+        margin: size(16) 0;
+    }
+
+    &__empty {
+        color: var(--mc-gray-700);
+        font-size: size(14);
+    }
+
+    .mestres-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+}

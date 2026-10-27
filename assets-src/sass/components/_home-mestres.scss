@@ -8,6 +8,10 @@
         color: var(--mc-gray-700);
         font-size: size(13);
     }
+
+    &__all {
+        margin-top: size(20);
+    }
 }
 
 .mestres-grid {
@@ -33,6 +37,8 @@
             align-items: center;
             display: flex;
             gap: size(14);
+            // O nome junto da foto, também no cartão largo da busca.
+            justify-content: flex-start;
         }
 
         // A foto do perfil, ou o ícone sem ela, em círculo.

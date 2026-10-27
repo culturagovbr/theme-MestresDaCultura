@@ -7,11 +7,4 @@ app.component('home-mestres', {
             masters: $MAPAS.config.mdcShowcase?.highlights ?? [],
         };
     },
-
-    methods: {
-        // "Coco · Olinda, PE", como no protótipo.
-        subtitle(master) {
-            return [master.activities.join(', '), master.city].filter(Boolean).join(' · ');
-        },
-    },
 });

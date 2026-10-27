@@ -45,6 +45,14 @@ $current_controller = $this->controller?->id;
                 </li>
                 <?php $this->applyTemplateHook('mc-header-menu-home', 'after') ?>
 
+                <?php // A busca pública de Mestras e Mestres (plugin MDC, /mestras-e-mestres/). ?>
+                <li>
+                    <a href="<?= $app->createUrl('mdc', 'masters') ?>" class="mc-header-menu--item<?= $current_controller === 'mdc' && $this->controller?->action === 'masters' ? ' active' : '' ?>">
+                        <span class="icon"> <mc-icon name="agent-2"></mc-icon> </span>
+                        <p class="label"> <?php i::_e('Mestras e<br>Mestres') ?> </p>
+                    </a>
+                </li>
+
                 <li>
                     <a href="<?= $app->createUrl('mdc', 'index') ?>" class="mc-header-menu--item">
                         <span class="icon"> <mc-icon name="master"></mc-icon> </span>

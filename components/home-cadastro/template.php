@@ -24,6 +24,6 @@ $this->import('mc-icon');
             <?= $this->text('title-festejo', i::__('Cadastrar Festejo Popular')) ?>
         </div>
         <p class="section-card__subtitle"><?= $this->text('description-festejo', i::__('Qualquer pessoa ou organização pode cadastrar um festejo popular.')) ?></p>
-        <a class="button button--primary-outline button--large" href="#"><?php i::_e('Cadastrar festejo') ?></a>
+        <a class="button button--primary-outline button--large" href="<?= $app->createUrl('mdc', 'festivity') ?>"><?php i::_e('Cadastrar festejo') ?></a>
     </div>
 </aside>

@@ -16,9 +16,10 @@
     }
 }
 
-// Etapas: o número dentro do círculo e o nome de todas, não só o da atual. O nome vem do `title` que o core já põe
-// em cada etapa; o rótulo dele (só o número, fora da atual) fica escondido.
-.registration__steps .stepper {
+// Etapas com o número dentro do círculo e o nome de todas, tirado do `title` de cada uma; vale também para o cadastro
+// do festejo.
+.registration__steps .stepper,
+.mdc-festivity-form .stepper {
     counter-reset: mdc-step;
 
     .step {

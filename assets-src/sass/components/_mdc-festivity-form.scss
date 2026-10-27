@@ -1,0 +1,80 @@
+// Cadastro do festejo em 6 etapas (componente mdc-festivity-form, do plugin MDC): a barra de etapas do cadastro dos
+// Mestres (_registration-form.scss) e os campos do BaseV2.
+.mdc-festivity {
+    width: 100%;
+    max-width: size(1170);
+    margin: 0 auto;
+    padding: size(24) size(16) size(64);
+    box-sizing: border-box;
+}
+
+.mdc-festivity-form {
+    display: flex;
+    flex-direction: column;
+    gap: size(24);
+
+    &__title {
+        margin: 0;
+        font-size: size(32);
+    }
+
+    &__intro {
+        margin: size(8) 0 0;
+        color: var(--mc-gray-700);
+    }
+
+    // Em tela estreita, as etapas sem a largura mínima do core.
+    @media (max-width: size(500)) {
+        .stepper .step {
+            min-width: unset;
+        }
+    }
+
+    &__step {
+        display: flex;
+        flex-direction: column;
+        gap: size(16);
+        padding: size(24);
+        border-radius: size(8);
+        background: var(--mc-white);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+    }
+
+    &__step-title {
+        margin: 0;
+        font-size: size(22);
+
+        // Recebe o foco ao trocar de etapa; o contorno só aparece no foco pelo teclado.
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+    }
+
+    &__missing {
+        padding: size(12) size(16);
+        border-left: size(4) solid var(--mc-danger-500);
+        background: var(--mc-white);
+
+        p,
+        ul {
+            margin: 0;
+        }
+
+        ul {
+            padding-left: size(20);
+        }
+    }
+
+    // Só a ação de avançar é cheia; voltar é o contorno cinza.
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: size(12);
+
+        .button--primary-outline {
+            border-color: var(--mc-gray-300);
+            color: var(--mc-gray-700);
+        }
+    }
+}

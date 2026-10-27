@@ -65,6 +65,16 @@
         }
     }
 
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: size(16);
+
+        @media (max-width: size(500)) {
+            grid-template-columns: 1fr;
+        }
+    }
+
     // Só a ação de avançar é cheia; voltar é o contorno cinza.
     &__actions {
         display: flex;
@@ -76,5 +86,111 @@
             border-color: var(--mc-gray-300);
             color: var(--mc-gray-700);
         }
+    }
+}
+
+// Classificação da etapa 1 (mdc-festivity-classification): o segmento e as tipologias dele, em caixas de marcar.
+.mdc-festivity-classification {
+    display: flex;
+    flex-direction: column;
+    gap: size(16);
+
+    &__typologies {
+        display: flex;
+        flex-direction: column;
+        gap: size(8);
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        gap: size(8);
+        min-height: size(32);
+
+        input {
+            width: size(18);
+            height: size(18);
+            accent-color: var(--mc-primary-500);
+        }
+    }
+}
+
+// Agenda da etapa 2 (mdc-festivity-agenda): os períodos em cartões e o formulário do novo período.
+.mdc-festivity-agenda {
+    display: flex;
+    flex-direction: column;
+    gap: size(12);
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: size(8);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(8);
+        padding: size(12) size(16);
+        border: 1px solid var(--mc-gray-300);
+        border-radius: size(8);
+    }
+
+    &__when {
+        display: flex;
+        flex-direction: column;
+        gap: size(4);
+
+        span {
+            color: var(--mc-gray-700);
+            font-size: size(14);
+        }
+    }
+
+    &__empty {
+        margin: 0;
+        color: var(--mc-gray-700);
+    }
+
+    &__new {
+        display: flex;
+        flex-direction: column;
+        gap: size(16);
+        padding: size(16);
+        border: 1px solid var(--mc-gray-300);
+        border-radius: size(8);
+    }
+
+    &__dates {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: size(12);
+
+        @media (max-width: size(900)) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @media (max-width: size(500)) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: size(8);
+    }
+
+    &__start {
+        align-self: flex-start;
     }
 }

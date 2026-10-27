@@ -1,0 +1,278 @@
+// Página pública do festejo: componente mdc-festivity-profile, do plugin MDC, nos ganchos da página de evento do core.
+
+// Esconde na página do festejo o id, a classificação etária, o "Publicado por", as informações do evento e as
+// verificações.
+.main-app:has(.mdc-festivity-profile--header) {
+    .entity-header .metadata__id,
+    .age-rating,
+    .event-info,
+    aside .entity-owner,
+    aside .entity-seals {
+        display: none;
+    }
+
+    // Corpo em cartões.
+    main .grid-12 > .col-12:not(.complaint-suggestion):not(.mdc-festivity-profile--main),
+    .mdc-festivity-profile__section {
+        padding: size(24);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+        box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+    }
+}
+
+.mdc-festivity-profile {
+    font-family: var(--mc-font-body);
+
+    h3,
+    h4 {
+        margin: 0;
+        font-family: var(--mc-font-headings);
+        font-weight: 700;
+    }
+
+    h3 {
+        font-size: size(20);
+    }
+
+    h4 {
+        font-size: size(18);
+    }
+
+    p {
+        margin: 0;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    // Abaixo do título do core, na largura do conteúdo.
+    &--header {
+        display: flex;
+        flex-direction: column;
+        gap: size(12);
+        width: 100%;
+        max-width: size(1170);
+        margin: 0 auto;
+        padding: 0 size(16) size(24);
+        box-sizing: border-box;
+    }
+
+    &__classification {
+        color: var(--mc-gray-700);
+        font-size: size(16);
+    }
+
+    &__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(8);
+    }
+
+    &__chip,
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: size(6);
+        padding: size(6) size(12);
+        border-radius: size(20);
+        font-size: size(14);
+        font-weight: 600;
+    }
+
+    &__chip {
+        background: #FDCAB7;
+        color: #5A0B34;
+    }
+
+    &__badge {
+        background: #6B6800;
+        color: var(--mc-white);
+    }
+
+    &--main {
+        display: flex;
+        flex-direction: column;
+        gap: size(24);
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        gap: size(16);
+    }
+
+    &__facts {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: size(8) size(16);
+        margin: 0;
+
+        dt {
+            color: var(--mc-gray-700);
+            font-size: size(14);
+            font-weight: 600;
+        }
+
+        dd {
+            display: flex;
+            flex-direction: column;
+            gap: size(4);
+            margin: 0;
+        }
+
+        @media (max-width: size(500)) {
+            grid-template-columns: 1fr;
+
+            dd {
+                margin-bottom: size(8);
+            }
+        }
+    }
+
+    &__masters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: size(12);
+
+        @media (max-width: size(600)) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__master {
+        display: flex;
+        align-items: center;
+        gap: size(12);
+        min-height: size(44);
+        padding: size(12);
+        border: 1px solid var(--mc-gray-300);
+        border-radius: size(8);
+        color: var(--mc-black);
+        text-decoration: none;
+
+        span {
+            display: flex;
+            flex-direction: column;
+        }
+
+        small {
+            color: var(--mc-gray-700);
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: #F74E11;
+        }
+    }
+
+    &__avatar {
+        flex: 0 0 auto;
+        width: size(48);
+        height: size(48);
+        border-radius: 50%;
+        object-fit: cover;
+
+        &--empty {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--mc-gray-100);
+            color: var(--mc-gray-500);
+        }
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(8);
+
+        li {
+            padding: size(6) size(12);
+            border-radius: size(20);
+            background: #FDCAB7;
+            color: #5A0B34;
+            font-size: size(14);
+            font-weight: 600;
+        }
+    }
+
+    &__economy {
+        display: flex;
+        flex-direction: column;
+        gap: size(4);
+    }
+
+    &--aside {
+        display: flex;
+        flex-direction: column;
+        gap: size(24);
+        margin-bottom: size(24);
+    }
+
+    // O quadro do certificado, tracejado.
+    &__certificate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: size(10);
+        padding: size(24) size(20);
+        border: 2px dashed #F74E11;
+        border-radius: var(--mc-border-radius-sm);
+        text-align: center;
+
+        > .iconify {
+            color: #F74E11;
+            font-size: size(32);
+        }
+
+        p {
+            color: var(--mc-gray-700);
+            font-size: size(14);
+        }
+
+        .button {
+            border: 2px solid #F74E11;
+            background: var(--mc-white);
+            color: #F74E11;
+
+            &:hover,
+            &:focus-visible {
+                background: #F74E11;
+                color: var(--mc-white);
+            }
+        }
+    }
+
+    &__producer {
+        display: flex;
+        flex-direction: column;
+        gap: size(12);
+        padding: size(24) size(20);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+        box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+
+        .mdc-festivity-profile__facts {
+            grid-template-columns: 1fr;
+
+            dd {
+                margin-bottom: size(8);
+            }
+        }
+    }
+
+    &__point {
+        align-self: flex-start;
+        margin-top: size(4);
+        padding: size(2) size(8);
+        border-radius: size(12);
+        background: #6B6800;
+        color: var(--mc-white);
+        font-size: size(12);
+        font-weight: 700;
+    }
+}

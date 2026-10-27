@@ -1,0 +1,178 @@
+// Mapa da Rede na home (componente mdc-network-map, do plugin MDC): o Brasil por estado, com a cor pela quantidade de
+// mestras e mestres. As faixas são do laranja do tema; sem ninguém, cinza.
+.mdc-network-map {
+    margin-top: size(36);
+
+    &__title {
+        font-size: size(22);
+        margin-bottom: size(8);
+    }
+
+    &__description {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+        margin-bottom: size(16);
+    }
+
+    &__body {
+        align-items: flex-start;
+        display: grid;
+        gap: size(24);
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        // O mapa encolhe e volta aos poucos, sem salto.
+        transition: grid-template-columns 0.4s ease-in-out;
+
+        // Com todos os estados, a lista ganha a segunda coluna e a área fica meio a meio.
+        &--all {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__svg {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    &__state {
+        fill: var(--mc-primary-500);
+        stroke: var(--mc-white);
+        stroke-width: 1;
+        transition: fill-opacity 0.2s ease-in-out;
+
+        &--0 {
+            fill: var(--mc-gray-300);
+        }
+
+        &--1 { fill-opacity: 0.3; }
+        &--2 { fill-opacity: 0.5; }
+        &--3 { fill-opacity: 0.75; }
+        &--4 { fill-opacity: 1; }
+    }
+
+    &__link {
+        &:hover .mdc-network-map__state,
+        &:focus-visible .mdc-network-map__state {
+            fill: var(--mc-secondary-500, var(--mc-primary-700));
+            fill-opacity: 1;
+            stroke: var(--mc-black);
+            stroke-width: 2;
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: size(6);
+        list-style: none;
+        margin: 0 0 size(16);
+        padding: 0;
+
+        // A ordem segue de cima para baixo: os dez primeiros na primeira coluna.
+        &--all {
+            column-gap: size(24);
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-rows: repeat(var(--mdc-map-rows), auto);
+            row-gap: size(2);
+
+            @include mobile {
+                display: flex;
+            }
+
+            // Os estados que entram na segunda coluna aparecem esmaecendo, depois que a área abre.
+            li:nth-child(n + 11) {
+                animation: mdc-network-map-in 0.3s ease-out 0.25s both;
+
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none;
+                }
+            }
+        }
+
+        a {
+            color: inherit;
+            display: flex;
+            font-size: size(14);
+            justify-content: space-between;
+            padding: size(4) 0;
+
+            strong {
+                color: var(--mc-primary-500);
+            }
+        }
+
+        // Aberta, a lista fica mais compacta e cabe com os 27 estados na altura do mapa.
+        &--all a {
+            font-size: size(13);
+            line-height: 1.4;
+            padding: size(2) 0;
+        }
+    }
+
+    // No computador, o botão recua o espaçamento e a borda (19px + 2px) e o texto alinha com a lista; no celular, sem
+    // recuo.
+    &__toggle {
+        margin-bottom: size(16);
+        margin-left: size(-21);
+
+        @include mobile {
+            margin-left: 0;
+        }
+    }
+
+    &__empty {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+
+    &__legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(12);
+    }
+
+    &__legend-item {
+        align-items: center;
+        color: var(--mc-gray-700);
+        display: inline-flex;
+        font-size: size(12);
+        gap: size(6);
+
+        &::before {
+            background: var(--mc-primary-500);
+            border-radius: 2px;
+            content: '';
+            height: size(12);
+            width: size(12);
+        }
+
+        &.mdc-network-map__state--0::before { background: var(--mc-gray-300); }
+        &.mdc-network-map__state--1::before { opacity: 0.3; }
+    }
+}
+
+@keyframes mdc-network-map-in {
+    from {
+        opacity: 0;
+        transform: translateY(size(4));
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -354,3 +354,44 @@
     font-size: size(14);
     font-weight: 400;
 }
+
+// A pessoa responsável (mdc-festivity-person) e o aceite da etapa 6.
+.mdc-festivity-person {
+    display: flex;
+    flex-direction: column;
+    gap: size(16);
+
+    &__consent {
+        display: flex;
+        align-items: center;
+        gap: size(8);
+        min-height: size(32);
+
+        input {
+            width: size(18);
+            height: size(18);
+            accent-color: var(--mc-primary-500);
+        }
+    }
+
+    &__privacy {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(14);
+    }
+}
+
+.mdc-festivity-form__consent-option {
+    display: flex;
+    align-items: flex-start;
+    gap: size(8);
+    line-height: 1.5;
+
+    input {
+        flex: 0 0 auto;
+        width: size(18);
+        height: size(18);
+        margin-top: size(3);
+        accent-color: var(--mc-primary-500);
+    }
+}

@@ -68,13 +68,7 @@ $current_controller = $this->controller?->id;
                     </a>
                 </li>
 
-                <li>
-                    <a href="<?= $app->createUrl('panel', 'index') ?>" class="mc-header-menu--item<?= $current_controller === 'panel' ? ' active' : '' ?>">
-                        <span class="icon"> <mc-icon name="dashboard"></mc-icon> </span>
-                        <p class="label"> <?php i::_e('Painel de<br>Controle') ?> </p>
-                    </a>
-                </li>
-                
+
                 <?php $this->applyTemplateHook('mc-header-menu', 'end') ?>
             </template>
 

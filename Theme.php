@@ -25,17 +25,27 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             $iconset['registration'] = 'mdi:file-account';
         });
 
-        $criarCadastro = [
-            'label' => i::__('Criar novo cadastro'),
+        // Os grupos do programa no menu do painel: o cadastro de mestra e os festejos, com os locais da agenda.
+        $mestres = [
+            'label' => i::__('Mestras e Mestres'),
             'column' => 'left',
             'items' => [
-                ['route' => 'mdc/index', 'icon' => 'master', 'label' => i::__('Criar Cadastro de Mestre/Mestra')],
-                ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Criar Cadastro de Festejo Popular')],
+                ['route' => 'mdc/index', 'icon' => 'master', 'label' => i::__('Cadastro de Mestres e Mestras')],
+            ],
+        ];
+        $festejos = [
+            'label' => i::__('Festejos Populares'),
+            'column' => 'left',
+            'items' => [
+                ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Cadastrar festejo')],
+                ['route' => 'panel/events', 'icon' => 'event', 'label' => i::__('Meus festejos')],
+                ['route' => 'mdc/places', 'icon' => 'map-pin', 'label' => i::__('Meus locais')],
             ],
         ];
 
-        // Prioridade alta para rodar depois dos módulos que alimentam a lista.
-        $app->hook('panel.nav', function (&$nav_items) use ($app, $criarCadastro) {
+        // Prioridade alta para rodar depois dos módulos que alimentam a lista. A Gestão do cadastro entra depois dos
+        // festejos (MDC\Plugin::addManagementShortcuts).
+        $app->hook('panel.nav', function (&$nav_items) use ($app, $mestres, $festejos) {
             // Tira as telas que o subsite não usa (MDC\Plugin::UNUSED_PANEL_SCREENS).
             $unused = array_map(fn($action) => "panel/{$action}", class_exists(\MDC\Plugin::class) ? \MDC\Plugin::UNUSED_PANEL_SCREENS : []);
             $semUso = function (array $grupo) use ($unused) {
@@ -43,14 +53,17 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 return $grupo;
             };
 
-            // saasSuperAdmin mantém o menu do core, sem as condições que app.enabled.* impõe, e só ganha o
-            // grupo do programa.
+            // "Painel de Controle" sozinho no alto, sem o título do grupo.
+            $painel = isset($nav_items['panel-menu']) ? ['panel-menu' => ['label' => ''] + $nav_items['panel-menu']] : [];
+
+            // O saasSuperAdmin vê o menu do core sem condições, sem "Meus Eventos" e com os grupos do programa no alto.
             if ($app->user->is('saasSuperAdmin')) {
                 foreach ($nav_items as &$grupo) {
                     unset($grupo['condition']);
 
                     if (isset($grupo['items'])) {
                         $grupo = $semUso($grupo);
+                        $grupo['items'] = array_values(array_filter($grupo['items'], fn($item) => ($item['route'] ?? '') !== 'panel/events'));
 
                         foreach ($grupo['items'] as &$item) {
                             unset($item['condition']);
@@ -60,33 +73,26 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 }
                 unset($grupo);
 
-                $nav_items = ['mdc-criar' => $criarCadastro] + $nav_items;
+                $nav_items = $painel + ['mdc-mestres' => $mestres, 'mdc-festejos' => $festejos] + $nav_items;
 
                 return;
             }
 
-            // Preserva o item original, que carrega a condição de avaliador.
-            $avaliacoes = array_values(array_filter(
+            // A moderação vai com o cadastro de mestra; preserva o item original, que carrega a condição de avaliador
+            // (MDC\Plugin::addModerationShortcut o troca pela lista da moderação ou o tira).
+            $mestres['items'] = array_merge($mestres['items'], array_values(array_filter(
                 $nav_items['opportunities']['items'] ?? [],
                 fn($item) => ($item['route'] ?? '') === 'panel/evaluations'
-            ));
+            )));
 
-            // Os grupos do core como eles são, menos o que o subsite não usa: "Menu do Painel de Controle" (o caminho
-            // de volta a "Meus cadastros", e a lista dos festejos de quem cadastra), "Outras opções" (com a moderação,
-            // para quem modera) e o do usuário logado (Meu Perfil, Sair). Entre eles, o grupo do programa.
-            $grupos = array_filter(['panel-menu' => $nav_items['panel-menu'] ?? null]) + ['mdc-criar' => $criarCadastro];
+            $grupos = $painel + ['mdc-mestres' => $mestres, 'mdc-festejos' => $festejos];
 
-            if (isset($grupos['panel-menu'])) {
-                $grupos['panel-menu']['items'][] = ['route' => 'panel/events', 'icon' => 'celebration', 'label' => i::__('Meus festejos')];
-            }
-
+            // Na coluna da direita, "Minha conta" (Conta e Privacidade) e o do usuário logado (Meu Perfil, Sair).
             if (isset($nav_items['more'])) {
-                $grupos['more'] = $semUso($nav_items['more']);
-                $grupos['more']['items'] = array_merge($grupos['more']['items'], $avaliacoes);
+                $grupos['more'] = ['label' => i::__('Minha conta')] + $semUso($nav_items['more']);
             }
 
-            // Administração segue como o core e os plugins montaram. Sem "Minhas oportunidades": o gestor chega ao
-            // programa pela Gestão do cadastro (MDC\Plugin::addManagementShortcuts).
+            // Administração como o core e os plugins montaram.
             if (isset($nav_items['admin'])) {
                 $grupos['admin'] = $nav_items['admin'];
             }

@@ -23,6 +23,18 @@
         color: var(--mc-gray-700);
     }
 
+    // Barra de etapas presa no topo ao rolar, numa faixa branca de lado a lado feita de sombras, com a sombra embaixo
+    // e o `clip-path` cortando o que sobe.
+    > .stepper {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        padding: size(24) 0;
+        background: white;
+        box-shadow: 0 -100vmax 0 100vmax white, 3px calc(3px - 100vmax) 3px 100vmax rgba(0, 0, 0, .5);
+        clip-path: inset(0 -100vmax -8px);
+    }
+
     // Em tela estreita, as etapas sem a largura mínima do core.
     @media (max-width: size(500)) {
         .stepper .step {

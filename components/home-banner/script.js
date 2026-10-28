@@ -3,7 +3,7 @@ app.component('home-banner', {
 
     data() {
         return {
-            counts: $MAPAS.config.mdcShowcase?.counts ?? { masters: 0, states: 0 },
+            counts: { masters: 0, states: 0, festivities: 0, ...$MAPAS.config.mdcShowcase?.counts },
         };
     },
 });

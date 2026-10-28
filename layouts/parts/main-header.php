@@ -60,8 +60,9 @@ $current_controller = $this->controller?->id;
                     </a>
                 </li>
 
+                <?php // A busca de festejos (plugin MDC, /festejos-populares/), ativa também na página de um festejo. ?>
                 <li>
-                    <a href="#" class="mc-header-menu--item">
+                    <a href="<?= $app->createUrl('mdc', 'festivities') ?>" class="mc-header-menu--item<?= ($current_controller === 'mdc' && $this->controller?->action === 'festivities') || $current_controller === 'event' ? ' active' : '' ?>">
                         <span class="icon"> <mc-icon name="celebration"></mc-icon> </span>
                         <p class="label"> <?php i::_e('Festejos<br>Populares') ?> </p>
                     </a>

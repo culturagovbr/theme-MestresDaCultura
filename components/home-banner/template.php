@@ -6,8 +6,7 @@
 
 use MapasCulturais\i;
 
-// Mestres e unidades da federação vêm do plugin MDC (MasterShowcase); os festejos ainda não são entidades da plataforma.
-$total_festejos = 0;
+// Os números vêm do plugin MDC: mestres e unidades da federação (MasterShowcase) e festejos publicados (FestivitySeal).
 ?>
 <section class="tema-banner">
     <h1><?= $this->text('title', i::__('Rede Nacional de Mestras e Mestres das Culturas Tradicionais e Populares')) ?></h1>
@@ -19,7 +18,7 @@ $total_festejos = 0;
             <span><?php i::_e('Mestras e Mestres cadastrados') ?></span>
         </div>
         <div class="badge">
-            <strong><?= $total_festejos ?></strong>
+            <strong>{{ counts.festivities }}</strong>
             <span><?php i::_e('Festejos Populares cadastrados') ?></span>
         </div>
         <div class="badge">

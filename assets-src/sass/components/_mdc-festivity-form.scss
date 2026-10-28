@@ -87,6 +87,14 @@
             color: var(--mc-gray-700);
         }
     }
+
+    // "Salvar e sair" ao lado de avançar, à direita mesmo quando a etapa não tem o de voltar.
+    &__forward {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(12);
+        margin-left: auto;
+    }
 }
 
 // Classificação da etapa 1 (mdc-festivity-classification): o segmento e as tipologias dele, em caixas de marcar.

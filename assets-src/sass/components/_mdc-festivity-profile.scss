@@ -276,3 +276,8 @@
         font-weight: 700;
     }
 }
+
+// Na agenda, o ícone do valor da entrada só aparece quando há valor.
+.entity-occurrence-list .content__price--value:has(.value:empty) {
+    display: none;
+}

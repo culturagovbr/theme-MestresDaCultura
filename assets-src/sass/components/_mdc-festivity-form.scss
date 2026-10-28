@@ -109,35 +109,6 @@
     }
 }
 
-// Classificação da etapa 1 (mdc-festivity-classification): o segmento e as tipologias dele, em caixas de marcar.
-.mdc-festivity-classification {
-    display: flex;
-    flex-direction: column;
-    gap: size(16);
-
-    &__typologies {
-        display: flex;
-        flex-direction: column;
-        gap: size(8);
-        margin: 0;
-        padding: 0;
-        border: 0;
-    }
-
-    &__option {
-        display: flex;
-        align-items: center;
-        gap: size(8);
-        min-height: size(32);
-
-        input {
-            width: size(18);
-            height: size(18);
-            accent-color: var(--mc-primary-500);
-        }
-    }
-}
-
 // Agenda da etapa 2 (mdc-festivity-agenda): os períodos em cartões e o formulário do novo período.
 .mdc-festivity-agenda {
     display: flex;
@@ -215,39 +186,38 @@
     }
 }
 
-// Listas da etapa 3 (mdc-festivity-checklist): na economia, um segmento aberto por vez, com quantos itens marcados.
-.mdc-festivity-checklist {
-    display: flex;
-    flex-direction: column;
-    gap: size(8);
+// Classificação da etapa 1 e listas da etapa 3 (mdc-festivity-classification e mdc-festivity-checklist): o que o
+// festejo tem a mais sobre o desenho de _mdc-acting-field.scss.
+.mdc-festivity-choices {
     margin: 0;
     padding: 0;
     border: 0;
 
-    &__group {
-        border-bottom: 1px solid var(--mc-gray-300);
-        padding: size(4) 0;
+    &__list {
+        display: flex;
+        flex-direction: column;
 
-        &:last-of-type {
-            border-bottom: 0;
+        & > .field {
+            margin-top: size(8);
         }
     }
 
-    &__group-title {
-        display: flex;
-        align-items: center;
-        gap: size(8);
-        min-height: size(44);
-        margin: 0;
-        font-weight: 600;
-        cursor: pointer;
+    // O acordeão ocupa a largura toda da coluna.
+    .mc-accordion__header,
+    .mc-accordion__content {
+        max-width: none;
     }
 
-    div > &__group-title {
-        min-height: auto;
-        cursor: default;
+    // Na .check-row, o nome longo fica ao lado da caixa de marcar.
+    .check-row {
+        flex-wrap: nowrap;
+
+        input {
+            flex-shrink: 0;
+        }
     }
 
+    // Quantos itens o grupo tem marcados, no título do acordeão da economia e da acessibilidade.
     &__count {
         min-width: size(24);
         padding: size(2) size(8);
@@ -256,30 +226,6 @@
         color: var(--mc-white);
         font-size: size(12);
         text-align: center;
-    }
-
-    &__options {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: size(4) size(16);
-        padding: size(4) 0 size(8);
-
-        @media (max-width: size(500)) {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    &__option {
-        display: flex;
-        align-items: center;
-        gap: size(8);
-        min-height: size(32);
-
-        input {
-            width: size(18);
-            height: size(18);
-            accent-color: var(--mc-primary-500);
-        }
     }
 }
 
@@ -365,14 +311,6 @@
     font-size: size(14);
     font-weight: 600;
     line-height: size(19);
-}
-
-// As opções são caixas de marcar, não títulos: o `.field > label` do BaseV2 não vale para as que ficam direto no grupo.
-.mdc-festivity-checklist > .mdc-festivity-checklist__option,
-.mdc-festivity-classification__typologies > .mdc-festivity-classification__option {
-    font-family: var(--mc-font-body);
-    font-size: size(14);
-    font-weight: 400;
 }
 
 // A pessoa responsável (mdc-festivity-person) e o aceite da etapa 6.

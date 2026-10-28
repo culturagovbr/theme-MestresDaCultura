@@ -192,4 +192,30 @@
     &--pending .mc-status {
         color: var(--mc-warning-500);
     }
+
+    // Festejo publicado em verde, como os status de sucesso.
+    &--published .mc-status {
+        color: var(--mc-success-500);
+    }
+
+    // O festejo tem ações (continuar, ver, editar) em vez de a linha toda ser o link; no celular elas descem.
+    &--festivity {
+        flex-wrap: wrap;
+        gap: size(12);
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    &__actions {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(8);
+    }
+}
+
+.panel--meus-cadastros .mc-card + .mc-card {
+    margin-top: size(16);
 }

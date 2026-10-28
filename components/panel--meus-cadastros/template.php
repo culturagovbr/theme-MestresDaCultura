@@ -24,7 +24,25 @@ $this->import('
         </a>
     </mc-card>
 
-    <p v-if="!loading && registrations.length === 0" class="panel--meus-cadastros__empty">
+    <?php // Os festejos: o rascunho volta ao formulário; o publicado abre a página e também se edita pelo formulário. ?>
+    <mc-card v-if="festivities.length > 0">
+        <div v-for="festivity in festivities" :key="festivity.id" class="registro-row registro-row--festivity" :class="{ 'registro-row--published': festivity.status > 0 }">
+            <div>
+                <div class="registro-row__title">{{ festivity.name }}</div>
+                <div class="registro-row__meta">{{ festivityMeta(festivity) }}</div>
+            </div>
+            <div class="registro-row__actions">
+                <mc-status :status-name="festivity.status > 0 ? text('publicado') : text('rascunho')"></mc-status>
+                <template v-if="festivity.status > 0">
+                    <a :href="festivity.singleUrl" class="button button--sm button--text">{{ text('ver') }}</a>
+                    <a :href="festivityUrl(festivity)" class="button button--sm button--primary-outline">{{ text('editar') }}</a>
+                </template>
+                <a v-else :href="festivityUrl(festivity)" class="button button--sm button--primary">{{ text('continuar cadastro') }}</a>
+            </div>
+        </div>
+    </mc-card>
+
+    <p v-if="!loading && registrations.length === 0 && festivities.length === 0" class="panel--meus-cadastros__empty">
         <?php i::_e('Você ainda não tem cadastros.') ?>
     </p>
 </section>

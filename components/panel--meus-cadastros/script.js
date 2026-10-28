@@ -11,40 +11,71 @@ app.component('panel--meus-cadastros', {
         return {
             loading: true,
             registrations: [],
+            festivities: [],
+            festivityFormUrl: $MAPAS.config.panelMeusCadastros?.festivityFormUrl,
         }
     },
 
     async created() {
-        const { opportunityId, subsiteId } = $MAPAS.config.panelMeusCadastros ?? {};
-
-        if (!opportunityId) {
-            this.loading = false;
-            return;
-        }
-
-        const query = {
-            '@select': 'id,number,status,singleUrl,opportunity.{name},sentTimestamp,updateTimestamp,editableFields,editSentTimestamp',
-            '@order': 'updateTimestamp DESC',
-            // `view` esconderia o rascunho do próprio dono: o cache de permissão não o guarda.
-            '@permissions': '@control',
-            'opportunity': `EQ(${opportunityId})`,
-            'status': 'GTE(0)',
-            'user': 'EQ(@me)',
-        };
-
-        // Checagem dupla, proposital: o edital diz o quê, o subsite diz de onde.
-        if (subsiteId) {
-            query._subsiteId = `EQ(${subsiteId})`;
-        }
-
         try {
-            this.registrations = await new API('registration').find(query);
+            [this.registrations, this.festivities] = await Promise.all([this.findRegistrations(), this.findFestivities()]);
         } finally {
             this.loading = false;
         }
     },
 
     methods: {
+        findRegistrations() {
+            const { opportunityId, subsiteId } = $MAPAS.config.panelMeusCadastros ?? {};
+
+            if (!opportunityId) {
+                return [];
+            }
+
+            const query = {
+                '@select': 'id,number,status,singleUrl,opportunity.{name},sentTimestamp,updateTimestamp,editableFields,editSentTimestamp',
+                '@order': 'updateTimestamp DESC',
+                // traz também o rascunho do próprio dono
+                '@permissions': '@control',
+                'opportunity': `EQ(${opportunityId})`,
+                'status': 'GTE(0)',
+                'user': 'EQ(@me)',
+            };
+
+            // Filtra também pelo subsite.
+            if (subsiteId) {
+                query._subsiteId = `EQ(${subsiteId})`;
+            }
+
+            return new API('registration').find(query);
+        },
+
+        // Os festejos de quem cadastra, rascunhos e publicados.
+        findFestivities() {
+            if (!this.festivityFormUrl) {
+                return [];
+            }
+
+            return new API('event').find({
+                '@select': 'id,name,status,singleUrl,createTimestamp,updateTimestamp',
+                '@order': 'updateTimestamp DESC',
+                // traz também o rascunho do próprio dono
+                '@permissions': '@control',
+                'status': 'GTE(0)',
+                'user': 'EQ(@me)',
+            });
+        },
+
+        festivityUrl(festivity) {
+            return `${this.festivityFormUrl}${festivity.id}/`;
+        },
+
+        festivityMeta(festivity) {
+            const data = festivity.updateTimestamp || festivity.createTimestamp;
+
+            return [this.text('festejo popular'), data ? `${this.text('última edição em')} ${data.date('2-digit year')}` : ''].filter(Boolean).join(' · ');
+        },
+
         title(registration) {
             return registration.opportunity?.name || `${this.text('inscrição')} ${registration.number}`;
         },

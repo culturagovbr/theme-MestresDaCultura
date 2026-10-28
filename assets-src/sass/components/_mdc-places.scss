@@ -1,0 +1,85 @@
+// "Meus locais" (componente mdc-places, do plugin MDC): um cartão por local, como as linhas de "Meus cadastros".
+.mdc-places {
+    display: flex;
+    flex-direction: column;
+    gap: size(16);
+    padding: size(24) 0;
+
+    &__new {
+        display: flex;
+    }
+
+    &__empty {
+        color: var(--mc-gray-700);
+        font-size: size(14);
+    }
+
+    &__place {
+        display: flex;
+        flex-direction: column;
+        gap: size(12);
+        padding: size(16);
+        border-radius: var(--mc-border-radius-xs);
+        background: var(--mc-white);
+        box-shadow: var(--mc-shadow-lv1);
+    }
+
+    &__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(8);
+
+        .mc-status {
+            margin: 0;
+            font-size: size(14);
+        }
+    }
+
+    &__name {
+        margin: 0;
+        font-size: size(16);
+    }
+
+    // Publicado em verde, como os status de sucesso.
+    &__status--published {
+        color: var(--mc-success-500);
+    }
+
+    &__address,
+    &__festivities p {
+        margin: 0;
+        color: var(--mc-gray-700);
+        font-size: size(14);
+    }
+
+    &__label {
+        font-size: size(13);
+        font-weight: 700;
+    }
+
+    &__festivities ul {
+        margin: size(4) 0 0;
+        padding-left: size(20);
+        font-size: size(14);
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: size(8);
+    }
+
+    &__locked {
+        color: var(--mc-gray-700);
+        font-size: size(13);
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: size(16);
+    }
+}

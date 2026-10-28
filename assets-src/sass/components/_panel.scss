@@ -22,6 +22,11 @@
     }
 }
 
+// A coluna do painel encolhe até a largura da tela e as abas das listas rolam por dentro.
+.panel__main {
+    min-width: 0;
+}
+
 // O BaseV2 pinta o body com meio branco e meio cinza para as duas colunas do painel
 // sangrarem até a borda. Aqui o painel é uma caixa centrada, e o fundo é branco liso.
 .controller-panel.action-index {

@@ -299,6 +299,43 @@
     border: 0;
 }
 
+// Os anos com recursos (mdc-festivity-years): botões que se marcam como as etiquetas da Atuação.
+.mdc-festivity-years {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    &__options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: size(8);
+        margin-top: size(8);
+    }
+
+    &__year {
+        min-width: size(64);
+        min-height: size(44);
+        padding: 0 size(12);
+        border: size(1) solid var(--mc-gray-300);
+        border-radius: var(--mc-border-radius-pill, size(22));
+        background: var(--mc-white);
+        color: var(--mc-gray-700);
+        font-size: size(14);
+        cursor: pointer;
+
+        &:hover {
+            border-color: var(--mc-gray-500);
+        }
+
+        &--selected {
+            border-color: $cream-dark;
+            background: $cream-dark;
+            color: var(--mc-low-500);
+            font-weight: 700;
+        }
+    }
+}
+
 // O título dos grupos (legenda do fieldset) e o da agenda com o visual do `.field > label` do BaseV2.
 .mdc-festivity-form .field > legend.field__title,
 .mdc-festivity-form .field > span.field__title,

@@ -5,8 +5,10 @@
     max-width: size(1170);
     padding: size(40) size(16);
 
+    // Entre 800 e 1060px, colunas que somam 97% com 3% de espaço entre elas, na largura da tela.
     @media (max-width: size(1060)) {
         grid-template-columns: 60% 37%;
+        column-gap: 3%;
     }
 
     @media (max-width: size(800)) {

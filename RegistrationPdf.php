@@ -218,8 +218,7 @@ class RegistrationPdf
         return $date ? $date->format('d/m/Y') : $value;
     }
 
-    // As fotos entram no PDF; sem o arquivo no disco, fica o nome. A resposta enviada guarda os ids que o formulário
-    // mandou: só entra o arquivo da galeria de quem se inscreveu, como o core monta a galeria (getFiles('gallery')).
+    // Embute as fotos da galeria do dono da inscrição; as demais, e as sem arquivo no disco, ficam só com a legenda.
     private function photosHtml(array $photos): string
     {
         $html = '';

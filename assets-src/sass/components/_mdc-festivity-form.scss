@@ -147,7 +147,7 @@
             font-size: size(14);
         }
 
-        // O local excluído pelo Mapa principal (FJ-13): a etapa cobra a troca.
+        // O aviso do local excluído pelo Mapa principal.
         span.mdc-festivity-agenda__removed {
             color: var(--mc-danger-500);
             font-weight: 600;
@@ -354,11 +354,16 @@
             border-color: var(--mc-gray-500);
         }
 
+        // O marcado tem borda escura e visto, além do fundo creme.
         &--selected {
-            border-color: $cream-dark;
+            border: size(2) solid var(--mc-low-500);
             background: $cream-dark;
             color: var(--mc-low-500);
             font-weight: 700;
+
+            &::before {
+                content: "✓ ";
+            }
         }
     }
 }
@@ -472,4 +477,21 @@
             background: var(--mc-gray-100);
         }
     }
+}
+
+// O "x" das etiquetas é um botão, sem a aparência de botão.
+.mdc-festivity-choices__remove {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+// A região viva da busca, vazia, não ocupa espaço.
+.mdc-festivity-field__empty:empty,
+.mdc-festivity-masters__empty:empty {
+    margin: 0;
 }

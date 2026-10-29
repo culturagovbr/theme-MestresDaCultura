@@ -43,8 +43,7 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             ],
         ];
 
-        // Prioridade alta para rodar depois dos módulos que alimentam a lista. A Gestão do cadastro entra depois dos
-        // festejos (MDC\Plugin::addManagementShortcuts).
+        // Monta o menu do painel depois dos módulos que alimentam a lista.
         $app->hook('panel.nav', function (&$nav_items) use ($app, $mestres, $festejos) {
             // Tira as telas que o subsite não usa (MDC\Plugin::UNUSED_PANEL_SCREENS).
             $unused = array_map(fn($action) => "panel/{$action}", class_exists(\MDC\Plugin::class) ? \MDC\Plugin::UNUSED_PANEL_SCREENS : []);
@@ -78,8 +77,7 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 return;
             }
 
-            // A moderação vai com o cadastro de mestra; preserva o item original, que carrega a condição de avaliador
-            // (MDC\Plugin::addModerationShortcut o troca pela lista da moderação ou o tira).
+            // Leva o item de avaliações, com a condição de avaliador, para o grupo do cadastro de mestra.
             $mestres['items'] = array_merge($mestres['items'], array_values(array_filter(
                 $nav_items['opportunities']['items'] ?? [],
                 fn($item) => ($item['route'] ?? '') === 'panel/evaluations'

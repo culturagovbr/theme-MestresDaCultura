@@ -225,6 +225,25 @@
         }
     }
 
+    // O título do grupo da etapa 3 é um botão com o visual do texto do acordeão e o foco à mostra.
+    button#{&}__segment-title {
+        display: flex;
+        align-items: center;
+        gap: size(10);
+        padding: 0;
+        border: 0;
+        background: none;
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid var(--mc-primary-500);
+            outline-offset: 2px;
+        }
+    }
+
     // Quantos itens o grupo tem marcados, no título do acordeão da economia e da acessibilidade.
     &__count {
         min-width: size(24);

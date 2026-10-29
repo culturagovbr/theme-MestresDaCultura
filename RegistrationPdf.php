@@ -3,6 +3,7 @@
 namespace MestresDaCultura;
 
 use MapasCulturais\App;
+use MapasCulturais\Entities\AgentFile;
 use MapasCulturais\Entities\File;
 use MapasCulturais\Entities\Registration;
 use MapasCulturais\Entities\RegistrationFieldConfiguration;
@@ -217,14 +218,17 @@ class RegistrationPdf
         return $date ? $date->format('d/m/Y') : $value;
     }
 
-    // As fotos entram no PDF; sem o arquivo no disco, fica o nome.
+    // As fotos entram no PDF; sem o arquivo no disco, fica o nome. A resposta enviada guarda os ids que o formulário
+    // mandou: só entra o arquivo da galeria de quem se inscreveu, como o core monta a galeria (getFiles('gallery')).
     private function photosHtml(array $photos): string
     {
         $html = '';
+        $owner = $this->registration->owner;
 
         foreach ($photos as $photo) {
             $photo = (array) $photo;
             $file = App::i()->repo('File')->find($photo['id'] ?? 0);
+            $file = $file instanceof AgentFile && $file->group === 'gallery' && $file->owner?->id === $owner?->id ? $file : null;
             $image = $file?->transform(self::PHOTO_TRANSFORMATION);
             $caption = $this->escape((string) (($photo['description'] ?? null) ?: ($photo['name'] ?? '')));
 

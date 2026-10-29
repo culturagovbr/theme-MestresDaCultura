@@ -7,6 +7,12 @@
     grid-template-columns: none;
     max-width: none;
 
+    // No celular, o círculo e o título lado a lado, com o título em duas linhas.
+    @include mobile {
+        flex-wrap: nowrap;
+        gap: size(8);
+    }
+
     &__logo {
         background: conic-gradient($olive 0 40%, $orange 40% 70%, var(--mc-secondary-500) 70% 100%);
         border-radius: 50%;
@@ -33,6 +39,10 @@
     &__text {
         line-height: 1.1;
 
+        @include mobile {
+            min-width: 0;
+        }
+
         &--title {
             color: var(--mc-secondary-500);
             font-family: var(--mc-font-headings);
@@ -42,6 +52,8 @@
 
             @include mobile {
                 font-size: size(11);
+                white-space: normal;
+                text-wrap: balance;
             }
         }
 

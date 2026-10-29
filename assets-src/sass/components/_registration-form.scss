@@ -112,7 +112,7 @@ $mdc-section-icons: (
         height: size(24);
         margin-right: size(8);
         vertical-align: size(-5);
-        background: #F74E11;
+        background: var(--mc-primary-500);
         mask: $icon center / contain no-repeat;
     }
 }

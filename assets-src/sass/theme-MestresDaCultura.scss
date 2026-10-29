@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700;800&display=swap');
 
-// O core pinta botões, links, abas e barras com a primária; o protótipo dá às ações o laranja-avermelhado e quase
-// não usa o azul. Por isso a primária é a mesma escala da secundária, e o azul e o azul-marinho da paleta ficam
-// só onde o tema os escolhe. O BaseV2 deriva -300 e -700 por lighten/darken; a paleta não segue essa derivação,
-// então os três valores são declarados.
-$primary-500: #F74E11 !default;
+// A primária repete a escala da secundária, com os três tons declarados; o -500 tem contraste de 4,5:1 com branco,
+// creme e creme escuro. O azul e o azul-marinho ficam só onde o tema os escolhe.
+$primary-500: #C43907 !default;
 $primary-300: #FDCAB7 !default;
 $primary-700: #80104A !default;
 
-$secondary-500: #F74E11 !default;
+$secondary-500: #C43907 !default;
 $secondary-300: #FDCAB7 !default;
 $secondary-700: #80104A !default;
 
@@ -26,7 +24,7 @@ $helper-500: $navy !default;
 $helper-300: $cream-dark !default;
 $helper-700: $navy !default;
 
-$opportunities-500: #F74E11 !default;
+$opportunities-500: #C43907 !default;
 $projects-500: #80104A !default;
 
 $font-body: 'Open Sans', sans-serif !default;

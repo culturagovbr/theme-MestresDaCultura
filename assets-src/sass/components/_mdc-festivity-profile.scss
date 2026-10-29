@@ -165,7 +165,7 @@
 
         &:hover,
         &:focus-visible {
-            border-color: #F74E11;
+            border-color: var(--mc-primary-500);
         }
     }
 
@@ -220,12 +220,12 @@
         align-items: center;
         gap: size(10);
         padding: size(24) size(20);
-        border: 2px dashed #F74E11;
+        border: 2px dashed var(--mc-primary-500);
         border-radius: var(--mc-border-radius-sm);
         text-align: center;
 
         > .iconify {
-            color: #F74E11;
+            color: var(--mc-primary-500);
             font-size: size(32);
         }
 
@@ -235,13 +235,13 @@
         }
 
         .button {
-            border: 2px solid #F74E11;
+            border: 2px solid var(--mc-primary-500);
             background: var(--mc-white);
-            color: #F74E11;
+            color: var(--mc-primary-500);
 
             &:hover,
             &:focus-visible {
-                background: #F74E11;
+                background: var(--mc-primary-500);
                 color: var(--mc-white);
             }
         }

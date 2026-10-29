@@ -19,7 +19,7 @@
     aside .entity-social-media .iconify,
     aside .mc-share-links .iconify,
     aside .mc-share-links a {
-        color: #F74E11;
+        color: var(--mc-primary-500);
     }
 
     // Corpo em cartões.
@@ -61,7 +61,8 @@
         flex-direction: column;
         align-items: flex-start;
         gap: size(8);
-        color: var(--mc-white);
+        // Texto em azul-marinho, com contraste de 7:1 em todo o degradê da Rede.
+        color: $navy;
 
         // No celular, o bloco vem logo abaixo do avatar e do título, centralizado.
         @media (max-width: size(800)) {
@@ -74,17 +75,15 @@
 
     &__title {
         margin: 0;
-        color: var(--mc-white);
+        color: $navy;
         font-family: var(--mc-font-headings);
         font-size: size(36);
         line-height: 1.15;
-        text-shadow: 0 1px 2px rgba(7, 22, 43, 0.35);
     }
 
     &__summary,
     &__since {
-        color: var(--mc-white);
-        text-shadow: 0 1px 2px rgba(7, 22, 43, 0.35);
+        color: $navy;
     }
 
     &__badge {
@@ -108,12 +107,12 @@
         gap: size(10);
         margin-bottom: size(24);
         padding: size(24) size(20);
-        border: 2px dashed #F74E11;
+        border: 2px dashed var(--mc-primary-500);
         border-radius: var(--mc-border-radius-sm);
         text-align: center;
 
         > .iconify {
-            color: #F74E11;
+            color: var(--mc-primary-500);
             font-size: size(32);
         }
 
@@ -129,13 +128,13 @@
 
         // Contornado em laranja.
         .button {
-            border: 2px solid #F74E11;
+            border: 2px solid var(--mc-primary-500);
             background: var(--mc-white);
-            color: #F74E11;
+            color: var(--mc-primary-500);
 
             &:hover,
             &:focus-visible {
-                background: #F74E11;
+                background: var(--mc-primary-500);
                 color: var(--mc-white);
             }
         }
@@ -213,7 +212,7 @@ $mdc-profile-icons: (
         width: size(24);
         height: size(24);
         margin-right: size(8);
-        background: #F74E11;
+        background: var(--mc-primary-500);
         mask: map-get($mdc-profile-icons, $icon) center / contain no-repeat;
     }
 

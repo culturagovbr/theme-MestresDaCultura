@@ -55,7 +55,7 @@ body:has(.mdc-certificate-actions) {
 
         &::before {
             content: 'Certificado';
-            color: #F74E11;
+            color: var(--mc-primary-500);
             font-size: size(14);
             font-weight: 700;
             letter-spacing: 0.2em;

@@ -109,6 +109,7 @@ body:has(.mdc-certificate-actions) {
             max-width: none;
             margin: 0;
             padding: 0;
+            page: certificado;
         }
 
         .seal-relation-view__content {
@@ -120,9 +121,8 @@ body:has(.mdc-certificate-actions) {
     }
 }
 
-@media print {
-    @page {
-        size: A4 landscape;
-        margin: 10mm;
-    }
+// Página nomeada: só o certificado sai em A4 deitado.
+@page certificado {
+    size: A4 landscape;
+    margin: 10mm;
 }

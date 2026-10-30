@@ -1,9 +1,8 @@
 // Correção do cadastro devolvido pela moderação, nas telas do core.
 
-// Esconde a data-limite dos campos reabertos e os avisos de prazo da barra de ações; o de campos obrigatórios, com
-// cabeçalho, fica.
+// Esconde a data-limite dos campos reabertos e, na correção, o aviso de prazo da barra de ações.
 .editable-fields small,
-.registration-actions__alert:not(:has(.registration-actions__alert-header)) {
+.action-registrationEdit .registration-actions__alert:not(:has(.registration-actions__alert-header)) {
     display: none;
 }
 

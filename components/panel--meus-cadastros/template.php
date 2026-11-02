@@ -42,7 +42,7 @@ $this->import('
         </div>
     </mc-card>
 
-    <p v-if="!loading && registrations.length === 0 && festivities.length === 0" class="panel--meus-cadastros__empty">
+    <p v-if="!loading && !failed && registrations.length === 0 && festivities.length === 0" class="panel--meus-cadastros__empty">
         <?php i::_e('Você ainda não tem cadastros.') ?>
     </p>
 </section>

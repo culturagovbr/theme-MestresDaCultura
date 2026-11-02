@@ -4,23 +4,31 @@ app.component('panel--meus-cadastros', {
     setup() {
         // os textos estão localizados no arquivo texts.php deste componente
         const text = Utils.getTexts('panel--meus-cadastros')
-        return { text }
+        const messages = useMessages();
+        return { text, messages }
     },
 
     data() {
         return {
             loading: true,
+            failed: false,
             registrations: [],
             festivities: [],
             festivityFormUrl: $MAPAS.config.panelMeusCadastros?.festivityFormUrl,
         }
     },
 
+    // Mostra o que carregou; na falha de uma das buscas, avisa pelo aviso de erro do core.
     async created() {
-        try {
-            [this.registrations, this.festivities] = await Promise.all([this.findRegistrations(), this.findFestivities()]);
-        } finally {
-            this.loading = false;
+        const [registrations, festivities] = await Promise.allSettled([this.findRegistrations(), this.findFestivities()]);
+
+        this.registrations = registrations.value ?? [];
+        this.festivities = festivities.value ?? [];
+        this.failed = registrations.status === 'rejected' || festivities.status === 'rejected';
+        this.loading = false;
+
+        if (this.failed) {
+            this.messages.error(this.text('falha ao carregar'));
         }
     },
 

@@ -39,6 +39,12 @@
             gap: size(14);
             // O nome junto da foto, também no cartão largo da busca.
             justify-content: flex-start;
+
+            // O nome é link para o perfil, na cor do texto.
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
         }
 
         // A foto do perfil, ou o ícone sem ela, em círculo.

@@ -60,6 +60,37 @@
         &:focus:not(:focus-visible) {
             outline: none;
         }
+
+        // Os cartões da etapa 6 com o ícone laranja das seções do cadastro.
+        @each $section in (apresentacao-e-portfolio, termo-de-responsabilidade-lgpd) {
+            &[data-mdc-section="#{$section}"]::before {
+                content: '';
+                display: inline-block;
+                width: size(24);
+                height: size(24);
+                margin-right: size(8);
+                vertical-align: size(-4);
+                background: var(--mc-primary-500);
+                mask: map-get($mdc-section-icons, $section) center / contain no-repeat;
+            }
+        }
+    }
+
+    // A foto principal à esquerda, como os demais campos.
+    &__picture .entity-profile {
+        margin: 0;
+    }
+
+    // O aviso do Calendário em cartão branco com a faixa verde à esquerda.
+    > .alert.success {
+        border-left: size(4) solid var(--mc-success-500);
+        border-radius: size(8);
+        background: var(--mc-white);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
+
+        .iconify {
+            color: var(--mc-success-500);
+        }
     }
 
     &__missing {
@@ -371,6 +402,7 @@
 // O título dos grupos (legenda do fieldset) e o da agenda com o visual do `.field > label` do BaseV2.
 .mdc-festivity-form .field > legend.field__title,
 .mdc-festivity-form .field > span.field__title,
+.mdc-festivity-form .files-list__title,
 .mdc-festivity-form__funding > legend {
     display: flex;
     align-items: baseline;

@@ -113,6 +113,29 @@
         @container (min-width: 1100px) {
             grid-template-columns: minmax(0, 1fr) size(340);
         }
+
+        // Em tela cheia: o mapa na altura da tela e o painel do item à direita, com rolagem própria.
+        &--full {
+            grid-template-columns: minmax(0, 1fr) size(340);
+            align-items: stretch;
+            height: 100vh;
+            padding: size(16);
+            background: var(--mc-gray-100);
+
+            .mdc-tree-curation__stage,
+            .mdc-tree-map {
+                height: 100%;
+            }
+
+            .mdc-tree-curation__panel {
+                overflow-y: auto;
+            }
+
+            @include mobile {
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-rows: minmax(0, 1fr) auto;
+            }
+        }
     }
 
     &__panel {

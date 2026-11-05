@@ -37,7 +37,7 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             'label' => i::__('Festejos Populares'),
             'column' => 'left',
             'items' => [
-                ['route' => 'event/create', 'icon' => 'celebration', 'label' => i::__('Cadastrar festejo')],
+                ['route' => 'mdc/festivity', 'icon' => 'celebration', 'label' => i::__('Cadastrar festejo')],
                 ['route' => 'panel/events', 'icon' => 'event', 'label' => i::__('Meus festejos')],
                 ['route' => 'mdc/places', 'icon' => 'map-pin', 'label' => i::__('Meus locais')],
             ],

@@ -82,7 +82,7 @@
     }
 
     // O aviso do Calendário em cartão branco com a faixa verde à esquerda.
-    > .alert.success {
+    &__main > .alert.success {
         border-left: size(4) solid var(--mc-success-500);
         border-radius: size(8);
         background: var(--mc-white);
@@ -93,19 +93,22 @@
         }
     }
 
+    // O que falta, na lista do quadro de erros da coluna de ações.
     &__missing {
-        padding: size(12) size(16);
-        border-left: size(4) solid var(--mc-danger-500);
-        background: var(--mc-white);
+        margin: 0;
+        padding-left: size(20);
+        text-align: left;
+    }
 
-        p,
-        ul {
-            margin: 0;
-        }
+    // O formulário e a coluna de ações nas proporções da inscrição (mc-container), sem a margem do contêiner.
+    > .container {
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
 
-        ul {
-            padding-left: size(20);
-        }
+    &__main {
+        gap: size(24);
     }
 
     &__row {
@@ -116,27 +119,6 @@
         @media (max-width: size(500)) {
             grid-template-columns: 1fr;
         }
-    }
-
-    // Só a ação de avançar é cheia; voltar é o contorno cinza.
-    &__actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: size(12);
-
-        .button--primary-outline {
-            border-color: var(--mc-gray-300);
-            color: var(--mc-gray-700);
-        }
-    }
-
-    // "Salvar e sair" ao lado de avançar, à direita mesmo quando a etapa não tem o de voltar.
-    &__forward {
-        display: flex;
-        flex-wrap: wrap;
-        gap: size(12);
-        margin-left: auto;
     }
 }
 

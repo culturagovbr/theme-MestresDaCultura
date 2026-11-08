@@ -26,6 +26,19 @@
         margin: 0 auto;
         max-width: size(640);
         opacity: 0.85;
+
+        // A Rede, logo abaixo do nome da Política Nacional.
+        &.tema-banner__subtitle {
+            font-family: var(--mc-font-headings);
+            font-size: size(20);
+            font-weight: 700;
+            margin-bottom: size(12);
+            opacity: 1;
+
+            @include mobile {
+                font-size: size(16);
+            }
+        }
     }
 
     .badges {

@@ -1,31 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;600;700;800&display=swap');
 
-// A primária repete a escala da secundária, com os três tons declarados; o -500 tem contraste de 4,5:1 com branco,
-// creme e creme escuro. O azul e o azul-marinho ficam só onde o tema os escolhe.
-$primary-500: #C43907 !default;
-$primary-300: #FDCAB7 !default;
-$primary-700: #80104A !default;
+// A paleta do manual da Política Nacional para as Culturas Tradicionais & Populares.
+$cream-dark: #F4EDC6 !default;
+$yellow: #EBB62B !default;
+$orange: #E79838 !default;
+$rust: #D84F1D !default;
+$red: #C23F31 !default;
+$wine: #6E174A !default;
+$blue: #587E9F !default;
+$navy: #141C2E !default;
+$olive-light: #A0A01A !default;
+$moss: #365F17 !default;
+$olive: #818530 !default;
+$brown: #642B18 !default;
+$brown-dark: #3F1505 !default;
 
-$secondary-500: #C43907 !default;
-$secondary-300: #FDCAB7 !default;
-$secondary-700: #80104A !default;
-
-$olive: #A0A000 !default;
-$orange: #FF982A !default;
-$yellow: #FCB601 !default;
-$red: #DF3D2D !default;
+// O creme mais claro, para fundo de texto.
 $cream: #FCFAED !default;
-$cream-dark: #F6EDC4 !default;
-$blue: #3F7FA1 !default;
-$navy: #07162B !default;
+
+// A primária repete a escala da secundária: vermelho-terra, vinho e creme. O -500 tem contraste de 4,5:1 com branco,
+// cinza claro e creme claro.
+$primary-500: $red !default;
+$primary-300: $cream-dark !default;
+$primary-700: $wine !default;
+
+$secondary-500: $red !default;
+$secondary-300: $cream-dark !default;
+$secondary-700: $wine !default;
 
 // Avisos informativos (mc-alert, info-message) em azul-marinho sobre o creme.
 $helper-500: $navy !default;
 $helper-300: $cream-dark !default;
 $helper-700: $navy !default;
 
-$opportunities-500: #C43907 !default;
-$projects-500: #80104A !default;
+$opportunities-500: $red !default;
+$projects-500: $wine !default;
+$events-500: $rust !default;
+$spaces-500: $moss !default;
 
 $font-body: 'Open Sans', sans-serif !default;
 $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;

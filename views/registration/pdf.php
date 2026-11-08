@@ -45,10 +45,10 @@ $attachments = $pdf->attachmentsIndex();
         }
         .logo-container img {
             max-width: 250px;
-            max-height: 80px;
+            max-height: 60px;
         }
         .logo-container .site-name {
-            font-size: 24pt;
+            font-size: 16pt;
             font-weight: bold;
             color: #222;
             margin: 10px 0;
@@ -87,9 +87,8 @@ $attachments = $pdf->attachmentsIndex();
         $mimeType = mime_content_type($logoUrl);
         ?>
         <img src="data:<?= $mimeType ?>;base64,<?= $imageData ?>" alt="Logo">
-    <?php else: ?>
-        <div class="site-name"><?= htmlspecialchars($siteName) ?></div>
     <?php endif; ?>
+    <div class="site-name"><?= htmlspecialchars($siteName) ?></div>
 </div>
 <?php $this->applyTemplateHook('registration-pdf-logo', 'after'); ?>
 

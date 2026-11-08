@@ -1,71 +1,53 @@
-// O componente do core desenha quatro losangos em .theme-logo__logo; aqui esse
-// mesmo elemento vira o círculo da marca do programa.
+// A assinatura da Política Nacional: a espiral (logo.image) e o nome em três linhas, a primeira em peso regular e as
+// outras duas em negrito, na cor da marca.
 .theme-logo {
     align-items: center;
     display: flex;
-    gap: size(12);
+    gap: size(10);
     grid-template-columns: none;
     max-width: none;
 
-    // No celular, o círculo e o título lado a lado, com o título em duas linhas.
     @include mobile {
         flex-wrap: nowrap;
         gap: size(8);
     }
 
-    &__logo {
-        background: conic-gradient($olive 0 40%, $orange 40% 70%, var(--mc-secondary-500) 70% 100%);
-        border-radius: 50%;
+    &__logo--img {
         flex: 0 0 auto;
-        height: size(44);
-        margin: 0;
-        max-width: none;
-        padding: 0;
-        width: size(44);
+        height: size(46);
+        max-height: none;
 
-        @include mobile {
-            height: size(30);
-            width: size(30);
+        img {
+            height: 100%;
+            max-height: none;
         }
 
-        .part1,
-        .part2,
-        .part3,
-        .part4 {
-            display: none;
+        @include mobile {
+            height: size(36);
         }
     }
 
     &__text {
-        line-height: 1.1;
+        color: var(--mc-secondary-500);
+        font-family: var(--mc-font-headings);
+        font-size: size(14);
+        letter-spacing: 0;
+        line-height: 1.15;
 
         @include mobile {
+            font-size: size(11);
             min-width: 0;
         }
 
         &--title {
-            color: var(--mc-secondary-500);
-            font-family: var(--mc-font-headings);
-            font-size: size(15);
-            font-weight: 800;
-            letter-spacing: size(0.5);
-
-            @include mobile {
-                font-size: size(11);
-                white-space: normal;
-                text-wrap: balance;
-            }
+            font-weight: 400;
         }
 
         &--subtitle {
-            color: var(--mc-gray-700);
-            font-size: size(10);
-            letter-spacing: size(1);
-            text-transform: uppercase;
-
-            @include mobile {
-                display: none;
-            }
+            font-family: var(--mc-font-headings);
+            font-size: inherit;
+            font-weight: 700;
+            white-space: pre-line;
         }
     }
 }

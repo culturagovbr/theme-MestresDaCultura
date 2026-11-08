@@ -27,15 +27,15 @@
         padding: size(24);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
-        box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+        box-shadow: 0 size(2) size(12) rgba($navy, 0.08);
     }
 }
 
-// Cabeçalho: a faixa nas cores da Rede; o título e o resto do bloco do plugin tomam o lugar do nome, do id, do tipo
+// Cabeçalho: a faixa creme da marca; o título e o resto do bloco do plugin tomam o lugar do nome, do id, do tipo
 // e da descrição curta do agente.
 .entity-header:has(.mdc-master-profile--header) {
     position: relative;
-    background: linear-gradient(180deg, #A9A62B 0%, #E6C267 60%, #FBD8AC 100%);
+    background: $cream-dark;
 
     .rightSide .data,
     .rightSide .description {
@@ -61,7 +61,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: size(8);
-        // Texto em azul-marinho, com contraste de 7:1 em todo o degradê da Rede.
+        // Texto em azul-marinho sobre o creme.
         color: $navy;
 
         // No celular, o bloco vem logo abaixo do avatar e do título, centralizado.
@@ -93,7 +93,7 @@
         margin-top: size(4);
         padding: size(6) size(14);
         border-radius: size(20);
-        background: #6B6800;
+        background: $moss;
         color: var(--mc-white);
         font-size: size(13);
         font-weight: 700;
@@ -158,8 +158,8 @@
 
         .mdc-acting-view__title {
             padding: size(8) size(14);
-            background: #FDCAB7;
-            color: #80104A;
+            background: $cream-dark;
+            color: $wine;
             font-size: size(13);
             font-weight: 700;
             letter-spacing: 0.04em;

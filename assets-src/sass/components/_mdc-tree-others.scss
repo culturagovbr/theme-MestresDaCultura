@@ -167,8 +167,8 @@
         font-weight: 700;
 
         &--created {
-            background: mix(#025F01, #FFFFFF, 14%);
-            color: #025F01;
+            background: mix($moss, #FFFFFF, 14%);
+            color: $moss;
         }
 
         &--associated {

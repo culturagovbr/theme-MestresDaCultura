@@ -38,6 +38,9 @@ $projects-500: $wine !default;
 $events-500: $rust !default;
 $spaces-500: $moss !default;
 
+// O vermelho das mensagens de erro e do "*obrigatório", com contraste de 4,5:1 sobre branco.
+$error: #B3261E !default;
+
 $font-body: 'Open Sans', sans-serif !default;
 $font-headings: 'Montserrat Alternates', 'Poppins', sans-serif !default;
 

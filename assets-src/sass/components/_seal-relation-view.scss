@@ -30,8 +30,8 @@ body:has(.mdc-certificate-actions) {
         align-items: center;
         gap: size(16);
         padding: size(56) size(48);
-        border: size(10) solid #F6EDC4;
-        outline: 2px solid #FF982A;
+        border: size(10) solid $cream-dark;
+        outline: 2px solid $orange;
         outline-offset: size(-18);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
@@ -73,7 +73,7 @@ body:has(.mdc-certificate-actions) {
 
         h3 {
             margin: 0;
-            color: #07162B;
+            color: $navy;
             font-family: var(--mc-font-headings);
             font-size: size(36);
             line-height: 1.2;

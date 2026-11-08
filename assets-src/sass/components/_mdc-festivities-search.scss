@@ -64,13 +64,13 @@
     overflow: hidden;
     border-radius: var(--mc-border-radius-sm);
     background: var(--mc-white);
-    box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+    box-shadow: 0 size(2) size(12) rgba($navy, 0.08);
     color: var(--mc-black);
     text-decoration: none;
 
     &:hover,
     &:focus-visible {
-        box-shadow: 0 size(4) size(16) rgba(7, 22, 43, 0.16);
+        box-shadow: 0 size(4) size(16) rgba($navy, 0.16);
     }
 
     &__image {
@@ -82,8 +82,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #FDCAB7;
-            color: #80104A;
+            background: $cream-dark;
+            color: $wine;
 
             .iconify {
                 width: size(40);
@@ -103,8 +103,8 @@
         align-self: flex-start;
         padding: size(4) size(10);
         border-radius: size(20);
-        background: #FDCAB7;
-        color: #5A0B34;
+        background: $cream-dark;
+        color: $wine;
         font-size: size(13);
         font-weight: 700;
     }

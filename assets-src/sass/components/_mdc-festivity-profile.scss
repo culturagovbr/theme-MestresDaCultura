@@ -17,7 +17,7 @@
         padding: size(24);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
-        box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+        box-shadow: 0 size(2) size(12) rgba($navy, 0.08);
     }
 }
 
@@ -84,12 +84,12 @@
     }
 
     &__chip {
-        background: #FDCAB7;
-        color: #5A0B34;
+        background: $cream-dark;
+        color: $wine;
     }
 
     &__badge {
-        background: #6B6800;
+        background: $moss;
         color: var(--mc-white);
     }
 
@@ -193,8 +193,8 @@
         li {
             padding: size(6) size(12);
             border-radius: size(20);
-            background: #FDCAB7;
-            color: #5A0B34;
+            background: $cream-dark;
+            color: $wine;
             font-size: size(14);
             font-weight: 600;
         }
@@ -254,7 +254,7 @@
         padding: size(24) size(20);
         border-radius: var(--mc-border-radius-sm);
         background: var(--mc-white);
-        box-shadow: 0 size(2) size(12) rgba(7, 22, 43, 0.08);
+        box-shadow: 0 size(2) size(12) rgba($navy, 0.08);
 
         .mdc-festivity-profile__facts {
             grid-template-columns: 1fr;
@@ -270,7 +270,7 @@
         margin-top: size(4);
         padding: size(2) size(8);
         border-radius: size(12);
-        background: #6B6800;
+        background: $moss;
         color: var(--mc-white);
         font-size: size(12);
         font-weight: 700;

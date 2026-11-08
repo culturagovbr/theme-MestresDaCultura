@@ -1,7 +1,14 @@
+// Rodapé em azul-marinho, com a assinatura da Política Nacional na versão para fundo escuro e os textos em creme.
 .main-footer {
+    background: $navy;
+    color: $cream-dark;
     gap: 0;
     margin-top: size(40);
     padding: size(32) size(24) 0;
+
+    a {
+        color: $cream-dark;
+    }
 
     &__top {
         display: flex;
@@ -20,6 +27,31 @@
         }
     }
 
+    &__brand {
+        align-items: center;
+        display: flex;
+        flex: 1 0 100%;
+        gap: size(10);
+        text-decoration: none;
+
+        img {
+            height: size(52);
+        }
+    }
+
+    &__brand-text {
+        color: $orange;
+        display: flex;
+        flex-direction: column;
+        font-family: var(--mc-font-headings);
+        font-size: size(15);
+        line-height: 1.15;
+
+        strong {
+            font-weight: 700;
+        }
+    }
+
     &__links {
         display: flex;
         flex-wrap: wrap;
@@ -31,7 +63,12 @@
     }
 
     &__institution {
-        color: var(--mc-gray-700);
+        color: $cream-dark;
         font-size: size(12);
+    }
+
+    &__reg {
+        background: $navy;
+        border-top: 1px solid rgba($cream-dark, 0.25);
     }
 }

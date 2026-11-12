@@ -38,7 +38,6 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
             'column' => 'left',
             'items' => [
                 ['route' => 'mdc/festivity', 'icon' => 'celebration', 'label' => i::__('Cadastrar festejo')],
-                ['route' => 'panel/events', 'icon' => 'event', 'label' => i::__('Meus festejos')],
                 ['route' => 'mdc/places', 'icon' => 'map-pin', 'label' => i::__('Meus locais')],
             ],
         ];
@@ -72,6 +71,8 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
                 }
                 unset($grupo);
 
+                // "Meus festejos", a tela de eventos, só no menu dele.
+                array_splice($festejos['items'], 1, 0, [['route' => 'panel/events', 'icon' => 'event', 'label' => i::__('Meus festejos')]]);
                 $nav_items = $painel + ['mdc-mestres' => $mestres, 'mdc-festejos' => $festejos] + $nav_items;
 
                 return;

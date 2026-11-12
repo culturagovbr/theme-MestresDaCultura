@@ -9,11 +9,5 @@ return [
     'pendente de moderação' => i::__('Pendente de moderação'),
     'enviado em' => i::__('Enviado em'),
     'última edição em' => i::__('Última edição em'),
-    'festejo popular' => i::__('Festejo popular'),
-    'rascunho' => i::__('Rascunho'),
-    'publicado' => i::__('Publicado'),
-    'ver' => i::__('Ver'),
-    'editar' => i::__('Editar'),
-    'continuar cadastro' => i::__('Continuar cadastro'),
     'falha ao carregar' => i::__('Não foi possível carregar os seus cadastros agora. Recarregue a página em instantes.'),
 ];

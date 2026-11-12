@@ -13,18 +13,18 @@ app.component('panel--meus-cadastros', {
             loading: true,
             failed: false,
             registrations: [],
-            festivities: [],
-            festivityFormUrl: $MAPAS.config.panelMeusCadastros?.festivityFormUrl,
+            festivities: $MAPAS.config.panelMeusCadastros?.festivities ?? [],
         }
     },
 
-    // Mostra o que carregou; na falha de uma das buscas, avisa pelo aviso de erro do core.
+    // Mostra o que carregou; na falha da busca, avisa pelo aviso de erro do core.
     async created() {
-        const [registrations, festivities] = await Promise.allSettled([this.findRegistrations(), this.findFestivities()]);
+        try {
+            this.registrations = await this.findRegistrations();
+        } catch {
+            this.failed = true;
+        }
 
-        this.registrations = registrations.value ?? [];
-        this.festivities = festivities.value ?? [];
-        this.failed = registrations.status === 'rejected' || festivities.status === 'rejected';
         this.loading = false;
 
         if (this.failed) {
@@ -56,32 +56,6 @@ app.component('panel--meus-cadastros', {
             }
 
             return new API('registration').find(query);
-        },
-
-        // Os festejos de quem cadastra, rascunhos e publicados.
-        findFestivities() {
-            if (!this.festivityFormUrl) {
-                return [];
-            }
-
-            return new API('event').find({
-                '@select': 'id,name,status,singleUrl,createTimestamp,updateTimestamp',
-                '@order': 'updateTimestamp DESC',
-                // traz também o rascunho do próprio dono
-                '@permissions': '@control',
-                'status': 'GTE(0)',
-                'user': 'EQ(@me)',
-            });
-        },
-
-        festivityUrl(festivity) {
-            return `${this.festivityFormUrl}${festivity.id}/`;
-        },
-
-        festivityMeta(festivity) {
-            const data = festivity.updateTimestamp || festivity.createTimestamp;
-
-            return [this.text('festejo popular'), data ? `${this.text('última edição em')} ${data.date('2-digit year')}` : ''].filter(Boolean).join(' · ');
         },
 
         title(registration) {

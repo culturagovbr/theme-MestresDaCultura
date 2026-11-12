@@ -23,7 +23,7 @@ $this->import('mc-icon');
             <mc-icon name="celebration"></mc-icon>
             <?= $this->text('title-festejo', i::__('Cadastrar Festejo Popular')) ?>
         </div>
-        <p class="section-card__subtitle"><?= $this->text('description-festejo', i::__('Qualquer pessoa ou organização pode cadastrar um festejo popular.')) ?></p>
+        <p class="section-card__subtitle"><?= $this->text('description-festejo', i::__('Qualquer pessoa ou organização pode cadastrar um festejo popular. O cadastro passa pela moderação da equipe do Calendário antes de o festejo ser publicado.')) ?></p>
         <a class="button button--primary-outline button--large" href="<?= $app->createUrl('mdc', 'festivity') ?>"><?php i::_e('Cadastrar festejo') ?></a>
     </div>
 </aside>

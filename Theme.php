@@ -103,18 +103,21 @@ class Theme extends \MapasCulturais\Themes\BaseV2\Theme
         }, 1000);
 
         // No breadcrumb da oportunidade, tira "Minhas oportunidades" fora do saasSuperAdmin e chama "Minhas avaliações"
-        // de "Moderação de cadastros".
-        $app->hook('Theme::addOpportunityBreadcramb', function () use ($app) {
+        // de "Moderação de cadastros", ou "Moderação de festejos" na oportunidade dos festejos.
+        $app->hook('Theme::addOpportunityBreadcramb', function ($unused, $label, $entity) use ($app) {
             $crumbs = $this->breadcrumb ?? [];
+            $opportunity = $entity instanceof \MapasCulturais\Entities\EvaluationMethodConfiguration ? $entity->opportunity : $entity;
+            $festivity = isset($app->plugins['MDC']) && $app->plugins['MDC']->programOpportunities()->isFestivityOpportunity($opportunity);
+            $moderation = $festivity ? i::__('Moderação de festejos') : i::__('Moderação de cadastros');
 
             if (!$app->user->is('saasSuperAdmin')) {
                 $mine = $app->createUrl('panel', 'opportunities');
                 $crumbs = array_filter($crumbs, fn($crumb) => ($crumb['url'] ?? null) !== $mine);
             }
 
-            $this->breadcrumb = array_values(array_map(function ($crumb) {
+            $this->breadcrumb = array_values(array_map(function ($crumb) use ($moderation) {
                 if (($crumb['label'] ?? null) === i::__('Minhas avaliações')) {
-                    $crumb['label'] = i::__('Moderação de cadastros');
+                    $crumb['label'] = $moderation;
                 }
 
                 return $crumb;

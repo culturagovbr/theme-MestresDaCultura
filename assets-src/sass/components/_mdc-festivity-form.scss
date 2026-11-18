@@ -269,8 +269,12 @@
     }
 }
 
-// Vínculo com os mestres (mdc-festivity-masters): os escolhidos em etiquetas e a lista do que a busca achou.
+// As mestras e os mestres do festejo (mdc-festivity-masters): os escolhidos em etiquetas e o que a busca achou.
 .mdc-festivity-masters {
+    display: flex;
+    flex-direction: column;
+    gap: size(8);
+
     &__selected,
     &__results {
         display: flex;
@@ -295,6 +299,12 @@
         padding: size(4) size(4) size(4) size(12);
         border-radius: size(16);
         background: var(--mc-gray-100);
+
+        // Quem perdeu o selo ou saiu da Rede: a etiqueta tracejada, para remover.
+        &--out {
+            border: 1px dashed var(--mc-gray-500);
+            background: none;
+        }
     }
 
     &__remove {

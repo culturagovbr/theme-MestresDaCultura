@@ -1,4 +1,4 @@
-// Página de curadoria da Árvore de Atuação: componente mdc-tree-curation, do plugin MDC.
+// Página de curadoria das árvores: componente mdc-tree-curation, do plugin MDC.
 .mdc-tree-curation {
     display: flex;
     flex-direction: column;
@@ -166,4 +166,12 @@
         font-family: var(--mc-font-headings);
         font-size: size(20);
     }
+}
+
+// A escolha da árvore, no cabeçalho da página: uma linha de links que quebra em telas estreitas.
+.mdc-tree-curation__trees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: size(8);
+    margin-top: size(12);
 }

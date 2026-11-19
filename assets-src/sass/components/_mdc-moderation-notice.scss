@@ -135,6 +135,17 @@
 }
 
 // Com o aviso na página, esconde o "Editar informações enviadas" da linha do tempo; fica o "Corrigir e reenviar".
-.tabs-component:has(.mdc-moderation-notice) .editable-fields {
+.tabs-component:has(.mdc-moderation-notice:not(.mdc-festivity-publication)) .editable-fields {
     display: none;
+}
+
+// Com o bloco da publicação do festejo (mdc-festivity-publication), os blocos do espaço de aviso quebram em linhas
+// na largura estreita.
+.tabs-component__alert:has(.mdc-festivity-publication) {
+    flex-wrap: wrap;
+    gap: size(16);
+
+    > .mdc-moderation-notice {
+        flex: 1 1 size(320);
+    }
 }

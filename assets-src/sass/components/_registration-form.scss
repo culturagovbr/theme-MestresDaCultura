@@ -16,10 +16,8 @@
     }
 }
 
-// Etapas com o número dentro do círculo e o nome de todas, tirado do `title` de cada uma; vale também para o cadastro
-// do festejo.
-.registration__steps .stepper,
-.mdc-festivity-form .stepper {
+// Etapas com o número dentro do círculo e o nome de todas, tirado do `title` de cada uma.
+.registration__steps .stepper {
     counter-reset: mdc-step;
 
     .step {

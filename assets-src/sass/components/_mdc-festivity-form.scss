@@ -122,7 +122,7 @@
     }
 }
 
-// Agenda da etapa 2 (mdc-festivity-agenda): os períodos em cartões e o formulário do novo período.
+// Agenda do festejo (mdc-festivity-agenda): os períodos em cartões e o formulário do novo período.
 .mdc-festivity-agenda {
     display: flex;
     flex-direction: column;
@@ -148,7 +148,7 @@
         border-radius: size(8);
     }
 
-    // As datas e o local ocupam a linha; "Editar local" e "Remover" ficam juntos à direita.
+    // As datas e o local ocupam a linha; "Remover" fica à direita.
     &__when {
         display: flex;
         flex: 1 1 size(240);
@@ -158,12 +158,6 @@
         span {
             color: var(--mc-gray-700);
             font-size: size(14);
-        }
-
-        // O aviso do local excluído pelo Mapa principal.
-        span.mdc-festivity-agenda__removed {
-            color: var(--mc-danger-500);
-            font-weight: 600;
         }
     }
 
@@ -200,6 +194,11 @@
         flex-wrap: wrap;
         justify-content: flex-end;
         gap: size(8);
+    }
+
+    &__hint {
+        color: var(--mc-gray-700);
+        font-size: size(12);
     }
 
     &__start {

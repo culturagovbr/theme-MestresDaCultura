@@ -1,0 +1,264 @@
+// Carteirinha da mestra (views/mdc/id-card.php, do plugin MDC): frente e verso do tamanho de um cartão, numa folha A4,
+// com os elementos do manual da marca.
+.mdc-id-card {
+    display: flow-root;
+    padding-bottom: size(48);
+    background: var(--mc-gray-100);
+
+    &__sheet {
+        width: 210mm;
+        min-height: 130mm;
+        margin: 0 auto;
+        padding: 18mm 19mm;
+        background: var(--mc-white);
+        color: $navy;
+        font-family: var(--mc-font-headings);
+        font-size: 7pt;
+        line-height: 1.3;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+
+        h1,
+        h2,
+        p,
+        dl,
+        dd {
+            margin: 0;
+            font-family: inherit;
+        }
+
+        h1 {
+            color: $red;
+            font-size: 16pt;
+            font-weight: 800;
+        }
+
+        .mdc-id-card__help {
+            margin: 2mm 0 10mm;
+            font-size: 10pt;
+        }
+    }
+
+    // A linha de recorte em volta e a da dobra no meio.
+    &__pair {
+        position: relative;
+        display: grid;
+        grid-template-columns: 85.6mm 85.6mm;
+        width: 171.2mm;
+        outline: 0.25mm dashed var(--mc-gray-700);
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -4mm;
+            bottom: -4mm;
+            left: 50%;
+            border-left: 0.25mm dashed var(--mc-gray-700);
+        }
+    }
+
+    &__side {
+        position: relative;
+        height: 54mm;
+        overflow: hidden;
+
+        > :where(:not(.mdc-id-card__art)) {
+            position: relative;
+        }
+
+        &--front {
+            background: $navy;
+            color: $cream-dark;
+
+            > .mdc-id-card__signature {
+                position: absolute;
+                top: 4mm;
+                right: 3.6mm;
+                color: $orange;
+
+                img {
+                    width: 6.6mm;
+                }
+            }
+        }
+
+        &--back {
+            padding: 6mm 6mm 0;
+            background: $cream-dark;
+
+            h2 {
+                width: 50mm;
+                margin-bottom: 2.6mm;
+                color: $red;
+                font-size: 8.6pt;
+                font-weight: 800;
+                line-height: 1.15;
+            }
+
+            dl {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 1.1mm 3mm;
+                width: 62mm;
+            }
+
+            dt {
+                color: $wine;
+                font-size: 6pt;
+                font-weight: 700;
+            }
+
+            dd {
+                font-size: 6.6pt;
+                overflow-wrap: anywhere;
+            }
+
+            > footer {
+                position: absolute;
+                right: 6mm;
+                bottom: 3mm;
+                left: 6mm;
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                padding-top: 1.4mm;
+                border-top: 0.3mm solid $orange;
+            }
+
+            small {
+                font-family: inherit;
+                font-size: 5pt;
+                line-height: 1.3;
+                text-align: right;
+            }
+        }
+    }
+
+    &__art {
+        position: absolute;
+        max-width: none;
+        pointer-events: none;
+
+        &--spiral { top: -15mm; left: -21mm; width: 72mm; }
+        &--pebble { top: 4mm; left: 2.4mm; width: 4mm; }
+        &--star { right: 5mm; bottom: 4.5mm; width: 3.6mm; }
+        &--weave { top: -7mm; right: -13mm; width: 40mm; }
+        &--plant { right: 6.5mm; bottom: 12mm; width: 9.5mm; }
+    }
+
+    &__portrait {
+        top: 8mm;
+        left: 6mm;
+        width: 30mm;
+        height: 30mm;
+        overflow: hidden;
+        border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%;
+
+        .mdc-id-card__side > & {
+            position: absolute;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__person {
+        top: 17.5mm;
+        right: 4.5mm;
+        left: 45mm;
+
+        .mdc-id-card__side > & {
+            position: absolute;
+        }
+    }
+
+    &__sheet &__kicker {
+        color: $orange;
+        font-size: 5.1pt;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    &__sheet &__name {
+        display: -webkit-box;
+        margin: 0.8mm 0 1.6mm;
+        overflow: hidden;
+        font-size: 11.5pt;
+        font-weight: 800;
+        line-height: 1.12;
+        overflow-wrap: anywhere;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+
+        &--medium { font-size: 9.5pt; }
+        &--small { font-size: 8pt; }
+    }
+
+    &__sheet &__activities,
+    &__sheet &__city {
+        display: -webkit-box;
+        overflow: hidden;
+        font-size: 7pt;
+        font-weight: 600;
+        line-height: 1.35;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    &__signature {
+        display: flex;
+        align-items: center;
+        gap: 1.4mm;
+        color: $red;
+        font-size: 4.8pt;
+        line-height: 1.18;
+
+        img {
+            width: 5.4mm;
+        }
+
+        strong {
+            display: block;
+            font-weight: 700;
+        }
+    }
+
+    // Na tela estreita, a frente em cima do verso.
+    @media screen and (max-width: size(820)) {
+        &__sheet {
+            width: auto;
+            min-height: 0;
+            padding: size(24) size(16);
+        }
+
+        &__pair {
+            grid-template-columns: 85.6mm;
+            width: 85.6mm;
+            margin: 0 auto;
+
+            &::after { display: none; }
+        }
+    }
+
+    @media print {
+        margin: 0;
+        padding: 0;
+        background: none;
+        page: portfolio;
+
+        &__sheet {
+            margin: 0;
+        }
+    }
+}
+
+@media print {
+    body:has(.mdc-id-card) .mdc-id-card .mdc-certificate-actions {
+        display: none;
+    }
+}

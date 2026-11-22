@@ -1,0 +1,510 @@
+// Portfólio da mestra (views/mdc/portfolio.php, do plugin MDC): folhas A4 com os elementos do manual da marca. A folha
+// cresce com o conteúdo e, na tela estreita, vira uma coluna.
+.mdc-portfolio {
+    display: flow-root;
+    padding-bottom: size(48);
+    background: var(--mc-gray-100);
+
+    &__sheet {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto 8mm;
+        padding: 20mm 20mm 10mm;
+        overflow: hidden;
+        background: $cream-dark;
+        color: $navy;
+        font-family: var(--mc-font-headings);
+        font-size: 11pt;
+        line-height: 1.6;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+
+        > :not(.mdc-portfolio__art) {
+            position: relative;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0;
+            font-family: var(--mc-font-headings);
+        }
+
+        h2 {
+            margin-bottom: 7mm;
+            color: $red;
+            font-size: 22pt;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        h3 {
+            margin-bottom: 3mm;
+            color: $wine;
+            font-size: 12.5pt;
+            font-weight: 700;
+            line-height: 1.25;
+            break-after: avoid;
+        }
+
+        p {
+            margin: 0;
+            font-size: inherit;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    &__art {
+        position: absolute;
+        max-width: none;
+        pointer-events: none;
+
+        &--spiral { top: -36mm; right: -34mm; width: 232mm; }
+        &--pebble { top: 34mm; left: 20mm; width: 13mm; }
+        &--star-blue { top: 56mm; left: 38mm; width: 8mm; }
+        &--star { right: 22mm; bottom: 66mm; width: 10mm; }
+        &--weave { top: -10mm; right: -34mm; width: 112mm; }
+        &--blob { top: -52mm; left: -52mm; width: 208mm; }
+        &--circles { right: -14mm; bottom: 33mm; width: 56mm; }
+        &--star-rust { top: 122mm; right: 30mm; width: 9mm; }
+        &--pebble-ochre { top: 144mm; left: 146mm; width: 10mm; }
+        &--leaf { right: -12mm; bottom: 30mm; width: 86mm; }
+        &--pebble-path { top: 22mm; right: 26mm; width: 14mm; }
+        &--plant { right: 33mm; bottom: 28mm; width: 17mm; }
+        &--plant-olive { right: 4mm; bottom: 28mm; width: 28mm; }
+    }
+
+    &__signature {
+        display: flex;
+        align-items: center;
+        gap: 2.5mm;
+        color: $red;
+        font-family: var(--mc-font-headings);
+        font-size: 7.5pt;
+        line-height: 1.2;
+
+        img {
+            width: 9.5mm;
+        }
+
+        strong {
+            display: block;
+            font-weight: 700;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 6mm;
+        margin-top: auto;
+        padding-top: 4mm;
+        border-top: 0.5mm solid $orange;
+        font-size: 8.5pt;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+        break-inside: avoid;
+    }
+
+    // Capa
+    &__sheet--cover {
+        justify-content: flex-end;
+        padding-bottom: 19mm;
+        background: $navy;
+        color: $cream-dark;
+
+        h1 {
+            max-width: 170mm;
+            margin: 4mm 0 5mm;
+            color: $cream-dark;
+            font-size: 39pt;
+            font-weight: 800;
+            line-height: 1.06;
+            overflow-wrap: anywhere;
+        }
+
+        .mdc-portfolio__long-name {
+            font-size: 30pt;
+        }
+
+        .mdc-portfolio__signature {
+            color: $orange;
+            font-size: 9.5pt;
+
+            img {
+                width: 13mm;
+            }
+        }
+
+        .mdc-portfolio__portrait {
+            position: absolute;
+        }
+    }
+
+    &__portrait {
+        top: 46mm;
+        left: 80mm;
+        width: 84mm;
+        height: 84mm;
+        overflow: hidden;
+        border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__title {
+        padding-top: 150mm;
+    }
+
+    &__kicker {
+        color: $orange;
+        font-family: var(--mc-font-headings);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+    }
+
+    &__subtitle {
+        max-width: 150mm;
+        font-family: var(--mc-font-headings);
+        font-weight: 600;
+        line-height: 1.4;
+
+        .mdc-portfolio__sheet & {
+            font-size: 14pt;
+        }
+    }
+
+    &__cover-footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-top: 24mm;
+        font-family: var(--mc-font-headings);
+        font-size: 9pt;
+        line-height: 1.45;
+        text-align: right;
+
+        .mdc-portfolio__signature {
+            text-align: left;
+        }
+    }
+
+    // Quem é: a biografia curta no bloco azul; a longa, na largura da folha.
+    &__sheet--short .mdc-portfolio__story {
+        width: 104mm;
+        min-height: 138mm;
+        padding-top: 10mm;
+        color: $cream;
+
+        h2 {
+            color: $cream-dark;
+        }
+
+        p {
+            font-family: var(--mc-font-headings);
+            font-size: 14pt;
+            line-height: 1.5;
+        }
+    }
+
+    &__sheet--long {
+        .mdc-portfolio__art--blob { top: -72mm; left: -30mm; width: 120mm; }
+        .mdc-portfolio__art--weave { top: -16mm; right: -26mm; width: 74mm; }
+
+        .mdc-portfolio__story {
+            margin: -6mm 0 10mm;
+
+            h2 {
+                margin-bottom: 28mm;
+                color: $cream-dark;
+            }
+
+            p {
+                max-width: 156mm;
+                margin-bottom: 3mm;
+            }
+        }
+    }
+
+    &__facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12mm;
+        margin-bottom: 14mm;
+
+        > div {
+            break-inside: avoid;
+        }
+    }
+
+    &__segment {
+        .mdc-portfolio__sheet & {
+            margin: 0 0 2mm;
+            font-size: 9.5pt;
+        }
+    }
+
+    &__contact {
+        .mdc-portfolio__sheet & {
+            margin-top: 6mm;
+        }
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2mm;
+        margin: 0 0 4mm;
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 2mm 4mm;
+            border-radius: 99px;
+            background: $moss;
+            color: $cream;
+            font-family: var(--mc-font-headings);
+            font-size: 10pt;
+            font-weight: 600;
+            line-height: 1.15;
+
+            &:nth-child(3n + 2) { background: $red; }
+            &:nth-child(3n) { background: $wine; }
+        }
+    }
+
+    // Trajetória
+    &__path {
+        max-width: 150mm;
+        margin: 0 0 14mm;
+        padding: 0;
+        list-style: none;
+
+        li {
+            position: relative;
+            padding: 0 0 12mm 14mm;
+            font-size: 12.5pt;
+            break-inside: avoid;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0.6mm;
+                left: 0;
+                width: 5.5mm;
+                height: 5.5mm;
+                border-radius: 47% 53% 46% 54% / 52% 48% 52% 48%;
+                background: $red;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 8mm;
+                bottom: 1mm;
+                left: 2.4mm;
+                width: 0.7mm;
+                background: $orange;
+            }
+
+            &:last-child::after { display: none; }
+            &:nth-child(2n)::before { background: $moss; }
+            &:nth-child(3n)::before { background: $wine; }
+        }
+
+        h3 {
+            font-size: 15pt;
+        }
+
+        p + p {
+            margin-top: 1.5mm;
+        }
+    }
+
+    // O trabalho
+    &__photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5mm;
+        margin-bottom: 11mm;
+
+        figure {
+            margin: 0;
+            break-inside: avoid;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 2mm;
+            object-fit: cover;
+        }
+
+        // Em número ímpar, a primeira ocupa a largura da folha.
+        figure:first-child:nth-last-child(odd) {
+            grid-column: 1 / -1;
+
+            img {
+                aspect-ratio: 17 / 7;
+                border-radius: 2mm 22mm 2mm 2mm;
+            }
+        }
+
+        figure:last-child img {
+            border-radius: 2mm 2mm 22mm 2mm;
+        }
+
+        figcaption {
+            margin-top: 1.5mm;
+            font-size: 9pt;
+            line-height: 1.35;
+        }
+    }
+
+    &__columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(46mm, 1fr));
+        gap: 8mm;
+        margin-bottom: 28mm;
+
+        > div {
+            break-inside: avoid;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin-bottom: 3mm;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        strong {
+            display: block;
+            font-family: var(--mc-font-headings);
+            font-weight: 600;
+        }
+
+        a,
+        span {
+            display: block;
+            color: $navy;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 400;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    @media screen and (max-width: size(820)) {
+        &__sheet {
+            width: auto;
+            min-height: 0;
+            margin: 0;
+            padding: size(32) size(20) size(24);
+
+            h2 { font-size: size(26); }
+        }
+
+        &__sheet--cover {
+            min-height: size(680);
+
+            h1,
+            .mdc-portfolio__long-name { font-size: size(32); }
+        }
+
+        &__title { padding-top: size(370); }
+        &__portrait { top: size(100); left: calc(50% - #{size(95)}); width: size(190); height: size(190); }
+        &__cover-footer { margin-top: size(32); }
+        &__cover-footer > span:last-child { display: none; }
+
+        &__art { display: none; }
+        &__art--spiral { display: block; top: size(-90); right: size(-120); width: size(560); }
+        &__art--pebble { display: block; top: size(60); left: size(24); width: size(30); }
+
+        &__sheet--short .mdc-portfolio__story,
+        &__sheet--long .mdc-portfolio__story {
+            width: auto;
+            min-height: 0;
+            margin: size(-32) size(-20) size(32);
+            padding: size(40) size(20) size(48);
+            border-radius: 0 0 50% 50% / 0 0 size(44) size(44);
+            background: $navy;
+            color: $cream;
+
+            h2 { margin-bottom: size(20); }
+            p { max-width: none; font-size: size(16); }
+        }
+
+        &__facts,
+        &__photos,
+        &__columns { grid-template-columns: 1fr; }
+
+        &__facts,
+        &__columns { gap: size(24); margin-bottom: size(28); }
+
+        &__photos {
+            gap: size(12);
+
+            img,
+            figure:first-child:nth-last-child(odd) img,
+            figure:last-child img { aspect-ratio: 4 / 3; border-radius: size(8); }
+        }
+
+        &__footer { flex-direction: column; align-items: flex-start; gap: size(8); }
+        &__signature,
+        &__sheet--cover &__signature { font-size: size(11); }
+        &__signature img { width: size(36); }
+        &__footer > span:last-child { font-size: size(12); }
+    }
+
+    // Na impressão, só as folhas, sem margem da página; a regra do certificado esconde o resto da página.
+    @media print {
+        margin: 0;
+        padding: 0;
+        background: none;
+        page: portfolio;
+
+        &__sheet {
+            min-height: 296.8mm;
+            margin: 0;
+            break-after: page;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+
+            &:last-child {
+                break-after: auto;
+            }
+        }
+    }
+}
+
+@media print {
+    html:has(.mdc-portfolio),
+    body:has(.mdc-portfolio) {
+        background: $cream-dark;
+    }
+
+    body:has(.mdc-portfolio) .mdc-portfolio .mdc-certificate-actions {
+        display: none;
+    }
+}
+
+@page portfolio {
+    size: A4;
+    margin: 0;
+}

@@ -1,5 +1,5 @@
-// Certificado do selo do programa: a página do core (seal-relation-view), com o visual da Rede só por CSS. Vale onde o
-// plugin pôs a barra de impressão (mdc-certificate-actions), que só entra no certificado do selo do programa.
+// Certificado do selo do programa: a página do core (seal-relation-view), com o visual da Rede só por CSS. Vale onde há
+// a barra de impressão (mdc-certificate-actions): o certificado do selo do programa e o portfólio da mestra.
 body:has(.mdc-certificate-actions) {
     .mdc-certificate-actions {
         display: flex;

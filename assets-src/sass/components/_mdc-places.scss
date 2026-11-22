@@ -5,10 +5,6 @@
     gap: size(16);
     padding: size(24) 0;
 
-    &__new {
-        display: flex;
-    }
-
     &__empty {
         color: var(--mc-gray-700);
         font-size: size(14);
@@ -63,23 +59,5 @@
         margin: size(4) 0 0;
         padding-left: size(20);
         font-size: size(14);
-    }
-
-    &__actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: size(8);
-    }
-
-    &__locked {
-        color: var(--mc-gray-700);
-        font-size: size(13);
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        gap: size(16);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'app.siteName' => 'Rede de Mestras e Mestres',
-    'app.siteDescription' => 'Rede Nacional de Mestras e Mestres das Culturas Tradicionais e Populares.',
+    'app.siteName' => 'Plataforma das Culturas Tradicionais e Populares do Brasil',
+    'app.siteDescription' => 'Cadastro nacional de Mestras e Mestres e de Festejos Populares das culturas tradicionais e populares do Brasil.',
 
     // entidades habilitadas
     // Oportunidades segue habilitada porque as inscrições dependem dela; o que se remove é a navegação.

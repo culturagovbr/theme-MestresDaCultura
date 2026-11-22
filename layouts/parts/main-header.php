@@ -49,7 +49,7 @@ $current_controller = $this->controller?->id;
                 <li>
                     <a href="<?= $app->createUrl('mdc', 'masters') ?>" class="mc-header-menu--item<?= $current_controller === 'mdc' && $this->controller?->action === 'masters' ? ' active' : '' ?>">
                         <span class="icon"> <mc-icon name="agent-2"></mc-icon> </span>
-                        <p class="label"> <?php i::_e('Mestras e<br>Mestres') ?> </p>
+                        <p class="label"> <?php i::_e('Rede Nacional de<br>Mestres e Mestras') ?> </p>
                     </a>
                 </li>
 
@@ -64,7 +64,15 @@ $current_controller = $this->controller?->id;
                 <li>
                     <a href="<?= $app->createUrl('mdc', 'festivities') ?>" class="mc-header-menu--item<?= ($current_controller === 'mdc' && $this->controller?->action === 'festivities') || $current_controller === 'event' ? ' active' : '' ?>">
                         <span class="icon"> <mc-icon name="celebration"></mc-icon> </span>
-                        <p class="label"> <?php i::_e('Festejos<br>Populares') ?> </p>
+                        <p class="label"> <?php i::_e('Festejos Populares<br>do Brasil') ?> </p>
+                    </a>
+                </li>
+
+                <?php // O cadastro de festejo (plugin MDC, /cadastrar-festejo/). ?>
+                <li>
+                    <a href="<?= $app->createUrl('mdc', 'festivity') ?>" class="mc-header-menu--item">
+                        <span class="icon"> <mc-icon name="registration"></mc-icon> </span>
+                        <p class="label"> <?php i::_e('Cadastro de<br>Festejos Populares') ?> </p>
                     </a>
                 </li>
 

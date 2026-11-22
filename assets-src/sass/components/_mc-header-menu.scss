@@ -42,3 +42,28 @@
 .mc-header-menu-user .user__name {
     color: var(--mc-low-500);
 }
+
+// A assinatura inteira ao lado do menu, que fica mais compacto nas larguras intermediárias.
+.mc-header-logo {
+    flex-shrink: 0;
+    width: auto;
+
+    .theme-logo {
+        flex-wrap: nowrap;
+    }
+}
+
+ul.mc-header-menu {
+    @media (max-width: size(1366)) {
+        gap: size(16);
+    }
+
+    @media (max-width: size(1240)) {
+        gap: size(10);
+
+        .mc-header-menu--item .label {
+            font-size: size(10);
+            letter-spacing: 0;
+        }
+    }
+}

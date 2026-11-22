@@ -51,3 +51,27 @@
         }
     }
 }
+
+// No celular, a assinatura no topo e no menu aberto, com as letras juntas e dentro da altura da barra.
+.mc-header-logo .theme-logo,
+.mc-header-menu.mobile .close .theme-logo {
+    @media (max-width: size(430)) {
+        gap: size(6);
+
+        .theme-logo__logo--img {
+            height: size(30);
+        }
+
+        .theme-logo__text {
+            font-size: size(10);
+            letter-spacing: 0;
+            line-height: 1.15;
+        }
+    }
+
+    @media (max-width: size(375)) {
+        .theme-logo__text {
+            font-size: size(9);
+        }
+    }
+}

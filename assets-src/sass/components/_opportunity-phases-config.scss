@@ -1,5 +1,5 @@
-// Fases e formulário da oportunidade do programa travados para quem não é saasSuperAdmin: sem criar ou excluir fase,
-// datas travadas, sem importar formulário nem mexer nas etapas e, na comissão, sem excluir nem reabrir.
+// Fases da oportunidade do programa travadas para quem não é saasSuperAdmin: sem criar ou excluir fase, datas
+// travadas, sem importar formulário e, na comissão, sem excluir nem reabrir.
 .mdc-structure-locked {
     .add-phase,
     .phase-delete,
@@ -8,14 +8,11 @@
     .opportunity-committee-groups__edit-group--field .button--delete,
     .opportunity-evaluation-committee__card-footer-actions > .danger__border,
     .opportunity-evaluation-committee__card-footer-actions > .button--delete,
-    .opportunity-form-import,
-    .form-builder__add-step,
-    .form-builder__step-config .button--text-danger {
+    .opportunity-form-import {
         display: none;
     }
 
-    .entity-field-datepicker,
-    .form-builder__step-config input {
+    .entity-field-datepicker {
         opacity: .6;
         pointer-events: none;
     }

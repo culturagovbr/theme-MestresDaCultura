@@ -5,6 +5,11 @@
     z-index: 2;
 }
 
+// Com uma janela aberta, as ações (onde ela nasce) ficam acima das etapas presas.
+.registration-actions:has(.vfm) {
+    z-index: 3;
+}
+
 // Só a ação de avançar é cheia; voltar é o contorno cinza.
 .registration-actions__secondary .button--primary-outline {
     border-color: var(--mc-gray-300);

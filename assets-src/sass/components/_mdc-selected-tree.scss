@@ -1,0 +1,86 @@
+// O "Selecionados" das árvores do formulário (mdc-selected-tree, do plugin MDC), como a atuação no perfil público: um
+// quadro por segmento, os itens recuados por nível e o x de cada um. A altura tem teto, com rolagem só além dele.
+.mdc-selected-tree {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(size(240), 1fr));
+    gap: size(10);
+    max-height: size(360);
+    overflow-y: auto;
+
+    &__empty,
+    &__plain {
+        grid-column: 1 / -1;
+        margin: 0;
+        font-size: size(13);
+    }
+
+    &__empty {
+        color: var(--mc-gray-700);
+    }
+
+    &__plain {
+        display: flex;
+        align-items: center;
+        gap: size(4);
+        color: var(--mc-secondary-700);
+        font-style: italic;
+    }
+
+    &__segment {
+        align-self: start;
+        overflow: hidden;
+        border: 1px solid var(--mc-gray-300);
+        border-radius: var(--mc-border-radius-sm);
+        background: var(--mc-white);
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(4);
+        padding: size(4) size(4) size(4) size(12);
+        background: $cream-dark;
+        color: $wine;
+        font-size: size(12);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        margin: 0;
+        padding: size(6) size(4) size(6) size(12);
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: size(4);
+        padding-left: calc(var(--mdc-level, 0) * #{size(14)});
+        font-size: size(13);
+    }
+
+    // O x é um botão do tamanho do toque, sem a aparência de botão.
+    &__remove {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        width: size(32);
+        height: size(32);
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: none;
+        color: inherit;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background: var(--mc-gray-100);
+        }
+    }
+}

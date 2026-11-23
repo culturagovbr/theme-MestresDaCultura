@@ -313,17 +313,6 @@
     }
 }
 
-// O "x" das etiquetas é um botão, sem a aparência de botão.
-.mdc-festivity-choices__remove {
-    display: inline-flex;
-    align-items: center;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: inherit;
-    cursor: pointer;
-}
-
 // A região viva da busca, vazia, não ocupa espaço.
 .mdc-festivity-field__empty:empty,
 .mdc-festivity-masters__empty:empty {

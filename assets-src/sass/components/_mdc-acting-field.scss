@@ -24,12 +24,6 @@
         font-weight: 700;
     }
 
-    .mc-tag-list__tag {
-        background: $cream-dark;
-        color: var(--mc-low-500);
-    }
-
-
     // Com o erro no campo inteiro, os "Outro" mantêm o visual normal; a mensagem segue embaixo.
     .field.error & .field input[type="text"],
     &.field.error .field input[type="text"] {
@@ -44,12 +38,6 @@
         display: flex;
         gap: size(10);
     }
-}
-
-.mc-tag-list__tag.mdc-acting-field__tag--segment,
-.mc-tag-list__tag.mdc-festivity-choices__tag--segment {
-    background: var(--mc-secondary-300);
-    color: var(--mc-secondary-700);
 }
 
 .mdc-acting-list {

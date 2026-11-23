@@ -8,6 +8,13 @@
     &__empty {
         color: var(--mc-gray-700);
         font-size: size(14);
+        padding: size(16);
+    }
+
+    &__more {
+        display: flex;
+        justify-content: center;
+        padding: size(12) size(16);
     }
 
     &__place {

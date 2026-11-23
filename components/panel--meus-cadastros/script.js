@@ -14,6 +14,7 @@ app.component('panel--meus-cadastros', {
             failed: false,
             registrations: [],
             festivities: $MAPAS.config.panelMeusCadastros?.festivities ?? [],
+            moreFestivities: $MAPAS.config.panelMeusCadastros?.moreFestivities ?? false,
         }
     },
 
@@ -56,6 +57,18 @@ app.component('panel--meus-cadastros', {
             }
 
             return new API('registration').find(query);
+        },
+
+        // Exclui o rascunho, pela regra de exclusão de inscrição do core, e o tira da lista.
+        async remove(registration) {
+            try {
+                registration.disableMessages();
+                await registration.delete(true);
+                this.registrations = this.registrations.filter((item) => item.id !== registration.id);
+                this.messages.success(this.text('rascunho excluído'));
+            } catch {
+                this.messages.error(this.text('erro ao excluir'));
+            }
         },
 
         title(registration) {

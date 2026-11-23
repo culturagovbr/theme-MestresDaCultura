@@ -11,6 +11,9 @@ $this->jsObject['config']['panelMeusCadastros'] = [
     'subsiteId' => $app->getCurrentSubsiteId(),
     // os nomes dos status configurados na oportunidade ("Em análise", "Aprovado")
     'statusLabels' => $opportunity?->statusLabels ?: new stdClass,
-    // as inscrições de festejo de quem tem a conta, a mesma lista de "Meus festejos"
-    'festivities' => \MDC\Services\FestivityList::of($app->user),
 ];
+
+// A primeira página das inscrições de festejo de quem tem a conta, a mesma lista de "Meus festejos".
+$festivities = \MDC\Services\FestivityList::page($app->user);
+$this->jsObject['config']['panelMeusCadastros']['festivities'] = $festivities['festivities'];
+$this->jsObject['config']['panelMeusCadastros']['moreFestivities'] = $festivities['more'];

@@ -198,8 +198,9 @@
         color: var(--mc-success-500);
     }
 
-    // O festejo tem ações (continuar, ver, editar) em vez de a linha toda ser o link; no celular elas descem.
-    &--festivity {
+    // Festejo e rascunho têm ações em vez de a linha toda ser o link; no celular elas descem.
+    &--festivity,
+    &--draft {
         flex-wrap: wrap;
         gap: size(12);
 
